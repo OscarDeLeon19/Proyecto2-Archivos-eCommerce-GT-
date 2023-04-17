@@ -1,0 +1,32 @@
+<div class="container border formulario" >
+    <h1>Bienvenido a eCommerce GT</h1>
+    <h3>Ingresa tus datos de usuario</h3>
+    <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="username">
+            <span class="form-text text-danger" *ngIf="campoValido('username')">
+                Debes llenar este campo
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password" >
+            <span class="form-text text-danger" *ngIf="campoValido('password')">
+                Debes llenar este campo
+            </span>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">
+                    Entrar
+                </button>
+            </div>
+        </div>
+        <span class="form-text text-primary">
+            <a routerLink='/auth/register'>¿No tienes una cuenta?. Da click aqui</a>
+        </span>
+    </form>
+</div>
+
+
