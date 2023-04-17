@@ -68,6 +68,7 @@ export class LoginComponent {
               let usuario = JSON.stringify(res);
               localStorage.setItem("usuario", usuario);
               this.miFormulario.reset();
+              this.router.navigate(["/comun"])
             }
           }
         })

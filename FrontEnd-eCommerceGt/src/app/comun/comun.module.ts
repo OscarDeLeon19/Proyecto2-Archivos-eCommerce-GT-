@@ -5,6 +5,8 @@ import { ComunRoutingModule } from './comun-routing.module';
 import { SharedComponent } from './shared/shared.component';
 import { MainComponent } from './pages/main/main.component';
 
+//Prime NG
+import {MenubarModule} from 'primeng/menubar';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,8 @@ import { MainComponent } from './pages/main/main.component';
   ],
   imports: [
     CommonModule,
-    ComunRoutingModule
+    ComunRoutingModule,
+    MenubarModule
   ]
 })
 export class ComunModule { }
