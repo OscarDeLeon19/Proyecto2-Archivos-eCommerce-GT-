@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import("./auth/auth.module").then(m => m.AuthModule)
   },
   {
+    path: "comun",
+    loadChildren: () => import("./comun/comun.module").then(m => m.ComunModule)
+  },
+  {
     path: "**",
     redirectTo: "auth"
   }
