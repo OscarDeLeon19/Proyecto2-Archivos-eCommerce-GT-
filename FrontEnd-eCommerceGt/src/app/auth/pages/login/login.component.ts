@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
+import { Usuario } from '../../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent {
    * @param maizService Servicio de la aplicacion
    * @param router Propiedad que maneja las rutas
    */
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -44,21 +46,31 @@ export class LoginComponent {
   guardar() {
     if (this.miFormulario.invalid) {
       this.miFormulario.markAllAsTouched();
-      Swal.fire({
-        icon: 'warning',
-        title: 'Error',
-        text: 'Username o contraseña incorrecta',
-        footer: "<a href='/auth/register'>Crea aqui tu cuenta</a>"
-      })
       return;
     } else {
       let { username, password } = this.miFormulario.value;
-      const body = {
-        username,
-        password
-      };
-      console.log(body);
-      this.miFormulario.reset();
+      this.authService.obtenerUsuario(username, password)
+        .subscribe({
+          next: (res: Usuario) => {
+            if (res == null) {
+              Swal.fire({
+                icon: 'warning',
+                title: 'Error',
+                text: 'Username o contraseña incorrecta',
+                footer: "<a href='/auth/register'>Crea aqui tu cuenta</a>"
+              });
+            } else {
+              Swal.fire({
+                icon: 'success',
+                title: 'success',
+                text: 'Bienvenido ' + res.nombre
+              });
+              let usuario = JSON.stringify(res);
+              localStorage.setItem("usuario", usuario);
+              this.miFormulario.reset();
+            }
+          }
+        })
     }
   }
 

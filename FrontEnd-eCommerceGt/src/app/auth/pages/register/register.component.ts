@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
+  s: string = "";
 
   // Formulario para ingresar los datos requeridos
   miFormulario: FormGroup = this.fb.group({
@@ -28,7 +31,9 @@ export class RegisterComponent {
    * @param maizService Servicio de la aplicacion
    * @param router Propiedad que maneja rutas
    */
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) { }
+
+
 
   ngOnInit(): void {
   }
@@ -65,12 +70,29 @@ export class RegisterComponent {
       this.miFormulario.markAllAsTouched();
       return;
     } else {
-      let { nombre, telefono, correo, direccion, fechaNacimiento, username, confirm } = this.miFormulario.value;
+      let { nombre, telefono, correo, direccion, fechaNacimiento, username, password } = this.miFormulario.value;
       const body = {
-        nombre, telefono, correo, direccion, fechaNacimiento, username, confirm, tipoUsuario: "Comun"
+        nombre, telefono, correo, direccion, fechaNacimiento, username, password, tipoUsuario: "Comun"
       }
-      console.log(body);
-      this.miFormulario.reset();
+      this.authService.crearUsuario(body)
+        .subscribe({
+          next: (n: any) => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Exito',
+              text: n.message,
+            });
+            this.miFormulario.reset();
+            this.router.navigate(["auth/login"]);
+          },
+          error: (e) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: e.error.message,
+            });
+          }
+        });
     }
   }
 }
