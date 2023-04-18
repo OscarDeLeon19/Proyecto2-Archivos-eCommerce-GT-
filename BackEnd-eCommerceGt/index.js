@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 const cors = require("cors");
 
 const usuarioRoutes = require('./routes/usuario.routes');
+const productoRoutes = require('./routes/producto.routes');
 
 const bp = require('body-parser');
 const app = express();
+
 app.use(cors());
+
 // Body Parser
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
@@ -29,5 +32,7 @@ async function start(){
 start();
 
 app.use("/user", usuarioRoutes);
+
+app.use("/productos", productoRoutes);
 
 console.log('Servidor Http escuchando en el puerto 3000');

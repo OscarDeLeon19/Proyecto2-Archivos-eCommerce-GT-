@@ -10,3 +10,14 @@ export interface Usuario{
     password: string,
     tipoUsuario: string
 }
+
+export interface Producto{
+    _id: any;
+    nombre: string,
+    descripcion: string,
+    precio: number,
+    imagen: string,
+    categoria: [],
+    usuario:string,
+    estado: string
+}

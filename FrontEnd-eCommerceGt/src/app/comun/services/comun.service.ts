@@ -1,22 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/auth/interfaces/usuario.interface';
+import { Producto, Usuario } from 'src/app/interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComunService {
 
+  baseUrl: string = "http://localhost:3000/productos";
+
   usuario?: Usuario;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   obtenerUsuario() {
     let jsonUser = localStorage.getItem("usuario");
     if (jsonUser) {
       this.usuario = JSON.parse(jsonUser);
-      console.log('service');
-      console.log(this.usuario);
     } else {
       this.router.navigate(['']);
     }
@@ -24,5 +25,9 @@ export class ComunService {
 
   getUsuario() {
     return this.usuario;
+  }
+
+  verProductos(){
+    return this.http.get<Producto[]>(`${this.baseUrl}/all`);
   }
 }
