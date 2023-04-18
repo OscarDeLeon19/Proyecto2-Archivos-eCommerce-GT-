@@ -68,7 +68,11 @@ export class LoginComponent {
               let usuario = JSON.stringify(res);
               localStorage.setItem("usuario", usuario);
               this.miFormulario.reset();
-              this.router.navigate(["/comun"])
+              if (res.tipoUsuario == "Comun") {
+                this.router.navigate(["/comun"])
+              } else {
+                console.log('Perro');
+              }
             }
           }
         })
