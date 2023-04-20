@@ -10,6 +10,7 @@ import { VerProductosComponent } from './pages/ver-productos/ver-productos.compo
 import {MenubarModule} from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ButtonModule } from 'primeng/button';
     ComunRoutingModule,
     MenubarModule,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule
   ]
 })
 export class ComunModule { }

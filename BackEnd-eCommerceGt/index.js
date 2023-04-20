@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const usuarioRoutes = require('./routes/usuario.routes');
 const productoRoutes = require('./routes/producto.routes');
+const carritoRoutes = require('./routes/carrito.routes');
 
 const bp = require('body-parser');
 const app = express();
@@ -34,5 +35,7 @@ start();
 app.use("/user", usuarioRoutes);
 
 app.use("/productos", productoRoutes);
+
+app.use("/carrito", carritoRoutes);
 
 console.log('Servidor Http escuchando en el puerto 3000');

@@ -1,8 +1,12 @@
 <div class="container">
     <h1>Productos de la empresa</h1>
-
+    <p-menubar >
+        <ng-template pTemplate="end" >
+            <input type="text" pInputText placeholder="Search" class="w-full" [(ngModel)]="textoBusqueda" name="textoBusqueda" (keypress)="buscar()" />
+        </ng-template>
+    </p-menubar>
     <div class="row">
-        <div class="col-sm-4 mb-3" *ngFor="let pr of productos">
+        <div class="col-sm-4 mb-3 mt-3" *ngFor="let pr of productos; let i = index">
             <p-card [header]="pr.nombre" subheader="{{pr.precio}}" [style]="{ width: '360px'}">
                 <ng-template pTemplate="header">
                     <img alt="Card" src="{{pr.imagen}}" class="imageCard"/>
@@ -11,7 +15,7 @@
                     {{pr.descripcion}}
                 </p>
                 <ng-template pTemplate="footer">
-                    <p-button label="Agregar al Carrito" icon="pi pi-cart-plus"></p-button>
+                    <p-button label="Agregar al Carrito" icon="pi pi-cart-plus" (click)="agregarCarrito(i)"></p-button>
                 </ng-template>
             </p-card>
         </div>

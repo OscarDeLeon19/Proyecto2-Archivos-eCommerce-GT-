@@ -30,4 +30,8 @@ export class ComunService {
   verProductos(){
     return this.http.get<Producto[]>(`${this.baseUrl}/all`);
   }
+
+  verProductosFiltrados(nombre: string){
+    return this.http.get<Producto[]>(`${this.baseUrl}/filter?nombre=${nombre}`);
+  }
 }
