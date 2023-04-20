@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/interfaces/usuario.interface';
+import { Usuario } from 'src/app/interfaces/interfaces';
 import { Router } from '@angular/router';
 import { ComunService } from '../../services/comun.service';
 

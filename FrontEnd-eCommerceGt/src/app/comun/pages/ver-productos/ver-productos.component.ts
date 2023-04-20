@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/interfaces/usuario.interface';
+import { Producto } from 'src/app/interfaces/interfaces';
 import { ComunService } from '../../services/comun.service';
 import Swal from 'sweetalert2';
 

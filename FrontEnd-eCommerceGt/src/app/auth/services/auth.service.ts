@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from '../../interfaces/usuario.interface';
+import { Usuario } from '../../interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -17,5 +17,13 @@ export class AuthService {
 
   obtenerUsuario(username: string, password: string){
     return this.http.get<Usuario>(`${this.baseUrl}?username=${username}&password=${password}`);
+  }
+
+  agregarTarjeta(body: any){
+    return this.http.put(`${this.baseUrl}/addCard`,body);
+  }
+
+  borrarTarjeta(body: any){
+    return this.http.put(`${this.baseUrl}/deleteCard`,body);
   }
 }

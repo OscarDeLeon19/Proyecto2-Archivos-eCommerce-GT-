@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Producto, Usuario } from 'src/app/interfaces/usuario.interface';
+import { Producto, Usuario } from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +34,6 @@ export class ComunService {
   verProductosFiltrados(nombre: string){
     return this.http.get<Producto[]>(`${this.baseUrl}/filter?nombre=${nombre}`);
   }
+
+  
 }

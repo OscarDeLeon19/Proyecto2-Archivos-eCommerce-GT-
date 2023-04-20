@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ComunService } from '../services/comun.service';
-import { Usuario } from 'src/app/interfaces/usuario.interface';
+import { Usuario } from 'src/app/interfaces/interfaces';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +25,7 @@ export class SharedComponent {
         icon: 'pi pi-fw pi-user',
         items: [
         { label: 'Modificar Informacion', icon: "pi pi-fw pi-user-edit" },
-        { label: 'Agregar Tarjeta', icon: "pi pi-fw pi-wallet" },
+        { label: 'Agregar Tarjeta', icon: "pi pi-fw pi-wallet", routerLink: "/comun/tarjeta" },
         ]
       },
       {

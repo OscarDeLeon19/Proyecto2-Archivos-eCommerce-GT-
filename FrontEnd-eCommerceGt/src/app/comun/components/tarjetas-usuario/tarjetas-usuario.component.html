@@ -1,0 +1,13 @@
+<div class="container">
+    <h3>Tarjetas del usuario</h3>
+    <nav class="navbar bg-light border mb-1" data-bs-theme="dark" *ngFor="let item of tarjetas; let i = index;">
+        <div class = "navbar-brand mx-5 text-black" >
+            <span><i class="pi pi-credit-card"></i></span>    
+               <span class="mx-2">{{item.numero}}</span>
+               <span class="mx-3">{{item.nombre}}</span>
+        </div> 
+        <div class = "navbar-brand">
+            <button class="btn btn-danger" (click)="borrarTarjeta(i)"> X </button>
+        </div>
+    </nav>
+</div>

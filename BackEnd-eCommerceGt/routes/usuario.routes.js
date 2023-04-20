@@ -8,4 +8,8 @@ router.post('/', controllerUsuario.insertarUsuario);
 
 router.get('/', controllerUsuario.buscarUsuarioLogin);
 
+router.put('/addCard', controllerUsuario.agregarTarjeta);
+
+router.put('/deleteCard', controllerUsuario.borrarTarjeta);
+
 module.exports = router;

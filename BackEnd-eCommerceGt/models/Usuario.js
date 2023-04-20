@@ -11,7 +11,8 @@ const usuarioSchema = new Schema({
     fechaNacimiento: Date,
     username: String,
     password: String,
-    tipoUsuario: String
+    tipoUsuario: String,
+    tarjetas: Array
 }, { versionKey: false });
 
 module.exports = model('usuarios', usuarioSchema);

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { VerProductosComponent } from './pages/ver-productos/ver-productos.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,7 @@ const routes: Routes = [
     children: [
       {path: "productos", component: VerProductosComponent},
       {path: "carrito", component: CarritoComponent},
+      {path: "tarjeta", component: ManejoTarjetasComponent},
       {path: "**", redirectTo: "productos" },
     ]
   }

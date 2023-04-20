@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/interfaces/usuario.interface';
+import { Producto } from 'src/app/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { MenuItem } from 'primeng/api';
 
@@ -45,7 +45,7 @@ export class CarritoComponent implements OnInit {
         label: 'Pagar Carrito',
         icon: 'pi pi-fw pi-dollar',
         command: (event: any) => {
-          
+
         }
       }
     ];

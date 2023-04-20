@@ -15,7 +15,8 @@ db.usuarios.insertMany([
 	    "fechaNacimiento": "1988-02-16",
 	    "username": "user1",
 	    "password":"123456",
-	    "tipoUsuario":"Comun"
+	    "tipoUsuario":"Comun",
+		"tarjetas" : []
 	},
 	{
 	    "nombre": "Ainara Rio",
@@ -25,7 +26,8 @@ db.usuarios.insertMany([
 	    "fechaNacimiento": "1996-03-03",
 	    "username": "user2",
 	    "password":"123456",
-	    "tipoUsuario":"Comun"
+	    "tipoUsuario":"Comun",
+		"tarjetas" : []
 	},
 	{
 	    "nombre": "Monserrat Valencia",
@@ -35,7 +37,8 @@ db.usuarios.insertMany([
 	    "fechaNacimiento": "2000-06-09",
 	    "username": "user3",
 	    "password":"123456",
-	    "tipoUsuario":"Comun"
+	    "tipoUsuario":"Comun",
+		"tarjetas" : []
 	},
 	{
 	    "nombre": "Constantino Asensio",
@@ -45,7 +48,8 @@ db.usuarios.insertMany([
 	    "fechaNacimiento": "2003-03-25",
 	    "username": "user4",
 	    "password":"123456",
-	    "tipoUsuario":"Comun"
+	    "tipoUsuario":"Comun",
+		"tarjetas" : []
 	},
 	{
 	    "nombre": "Jose-Antonio Arroyo",
@@ -55,7 +59,8 @@ db.usuarios.insertMany([
 	    "fechaNacimiento": "2001-05-15",
 	    "username": "user5",
 	    "password":"123456",
-	    "tipoUsuario":"Comun"
+	    "tipoUsuario":"Comun",
+		"tarjetas" : []
 	},
 	{
 	    "nombre": "Teodora Novo",

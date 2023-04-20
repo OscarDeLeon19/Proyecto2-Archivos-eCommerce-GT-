@@ -12,13 +12,19 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { AgregarTarjetaComponent } from './components/agregar-tarjeta/agregar-tarjeta.component';
+import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas.component';
+import { TarjetasUsuarioComponent } from './components/tarjetas-usuario/tarjetas-usuario.component';
 
 @NgModule({
   declarations: [
     SharedComponent,
     MainComponent,
     VerProductosComponent,
-    CarritoComponent
+    CarritoComponent,
+    AgregarTarjetaComponent,
+    ManejoTarjetasComponent,
+    TarjetasUsuarioComponent
   ],
   imports: [
     CommonModule,

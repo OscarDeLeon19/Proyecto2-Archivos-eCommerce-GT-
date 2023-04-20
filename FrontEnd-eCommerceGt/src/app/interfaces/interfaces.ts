@@ -8,7 +8,8 @@ export interface Usuario{
     fechaNacimiento: Date,
     username:string,
     password: string,
-    tipoUsuario: string
+    tipoUsuario: string,
+    tarjetas: Tarjeta[]
 }
 
 export interface Producto{
@@ -20,4 +21,11 @@ export interface Producto{
     categoria: [],
     usuario:string,
     estado: string
+}
+
+export interface Tarjeta{
+    numero: string;
+    nombre: string;
+    fechaExpiracion: Date;
+    cvv: number;
 }

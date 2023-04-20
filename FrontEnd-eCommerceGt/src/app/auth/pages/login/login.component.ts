@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from '../../services/auth.service';
-import { Usuario } from '../../../interfaces/usuario.interface';
+import { Usuario } from '../../../interfaces/interfaces';
 
 @Component({
   selector: 'app-login',
@@ -70,6 +70,7 @@ export class LoginComponent {
               localStorage.setItem("usuario", usuario);
               this.miFormulario.reset();
               if (res.tipoUsuario == "Comun") {
+                console.log(res);
                 this.router.navigate(["/comun"])
               } else {
                 console.log('Perro');
