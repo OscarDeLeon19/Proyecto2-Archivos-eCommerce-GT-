@@ -11,12 +11,14 @@ import {MenubarModule} from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 @NgModule({
   declarations: [
     SharedComponent,
     MainComponent,
-    VerProductosComponent
+    VerProductosComponent,
+    CarritoComponent
   ],
   imports: [
     CommonModule,

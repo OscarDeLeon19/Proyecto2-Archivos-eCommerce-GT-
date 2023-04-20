@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Carrito de Compras</h1>
+    <p-menubar [model]="items">
+        <ng-template pTemplate="start">
+            <div>
+                <input type="text" [(ngModel)]="textoTotal" class="form-control"  [disabled] = "true">
+            </div>
+        </ng-template>
+    </p-menubar>
+    <div class="row">
+        <div class="col-sm-4 mb-3 mt-3" *ngFor="let pr of productos; let i = index">
+            <p-card [header]="pr.nombre" subheader="{{pr.precio}}" [style]="{ width: '360px'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="{{pr.imagen}}" class="imageCard" />
+                </ng-template>
+                <p>
+                    {{pr.descripcion}}
+                </p>
+                <ng-template pTemplate="footer">
+                    <p-button label="Borrar del carrito" icon="pi pi-cart-plus"
+                        (click)="borrarDelCarrito(i)"></p-button>
+                </ng-template>
+            </p-card>
+        </div>
+    </div>
+</div>
