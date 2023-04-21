@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Producto, Usuario } from 'src/app/interfaces/interfaces';
+import { Pedido, Producto, Usuario, Venta } from 'src/app/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { MenuItem } from 'primeng/api';
 import { ComunService } from '../../services/comun.service';
@@ -24,8 +24,6 @@ export class CarritoComponent implements OnInit {
 
 
   constructor(private comunService: ComunService) {
-    let myMoment= moment().format('L')
-    console.log(myMoment);
     this.comunService.obtenerUsuario();
     this.usuario = comunService.getUsuario();
   }
@@ -59,22 +57,68 @@ export class CarritoComponent implements OnInit {
       {
         label: 'Pagar Carrito',
         icon: 'pi pi-fw pi-dollar',
-        command: (event: any) => {
-          const {numTarjeta} = this.miFormulario.value;
-          if(!numTarjeta){
-            Swal.fire({
-              icon: 'warning',
-              title: 'Error',
-              text: 'Debes ingresar una tarjeta de credito para el pago'
-            })
-          } else {
-             const venta:any[] = [];
-             const comprador = this.usuario?.username;
-             const tarjetaCredito = numTarjeta;
-          }
-        }
+        command: this.realizarVenta
       }
     ];
+  }
+
+  realizarVenta = () => {
+    const { numTarjeta } = this.miFormulario.value;
+    if (!numTarjeta) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Error',
+        text: 'Debes ingresar una tarjeta de credito para el pago'
+      })
+    } else {
+      if (this.productos.length > 0) {
+        const venta: Venta[] = [];
+        const comprador = this.usuario!.username;
+        const tarjetaCredito = numTarjeta;
+        const fecha = moment().format("YYYY-MM-DD");
+        const ventaPedido: any[] = [];
+        this.productos.forEach((pr) => {
+          venta.push({
+            comprador,
+            tarjetaCredito,
+            fecha,
+            producto: pr.nombre,
+            precio: pr.precio,
+            vendedor: pr.usuario,
+            idProducto: pr._id
+          });
+
+          ventaPedido.push({
+            nombre: pr.nombre,
+            precio: pr.precio,
+            usuarioVendedor: pr.usuario
+          })
+        });
+
+        const fechaEntrega = moment().add(5, "days").format("YYYY-MM-DD");
+        const pedido: Pedido = {
+          comprador,
+          fechaRealizacion: fecha,
+          fechaEntrega,
+          total: this.total,
+          direccion: this.usuario!.direccion,
+          productos: ventaPedido,
+          estado: 'En curso'
+        }
+        this.guardarVenta(venta, pedido);
+      } else {
+        Swal.fire({
+          icon: 'warning',
+          title: 'Error',
+          text: 'No hay articulos en el carrito de compras'
+        })
+      }
+    }
+  }
+
+  guardarVenta(venta:Venta[], pedido: Pedido){
+    console.log(venta);
+    console.log(pedido);
   }
 
   borrarDelCarrito(index: number) {
@@ -85,7 +129,6 @@ export class CarritoComponent implements OnInit {
       confirmButtonText: 'Si',
       denyButtonText: `No`,
     }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.productos.splice(index, 1);
         localStorage.setItem("carrito", JSON.stringify(this.productos));

@@ -29,3 +29,23 @@ export interface Tarjeta{
     fechaExpiracion: Date;
     cvv: number;
 }
+
+export interface Venta{
+    comprador: string,
+    tarjetaCredito: string,
+    fecha: Date | string, 
+    producto: string,
+    precio: number,
+    vendedor: string,
+    idProducto: string
+}
+
+export interface Pedido{
+    comprador: string,
+    fechaRealizacion: Date | string,
+    fechaEntrega: Date | string,
+    total: number,
+    direccion: string,
+    productos: any[],
+    estado: string
+}
