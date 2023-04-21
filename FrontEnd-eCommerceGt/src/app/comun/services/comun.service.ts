@@ -27,12 +27,13 @@ export class ComunService {
     return this.usuario;
   }
 
-  verProductos(){
-    return this.http.get<Producto[]>(`${this.baseUrl}/all`);
+  verProductos(username: string){
+    console.log(username);
+    return this.http.get<Producto[]>(`${this.baseUrl}/all?username=${username}`);
   }
 
-  verProductosFiltrados(nombre: string){
-    return this.http.get<Producto[]>(`${this.baseUrl}/filter?nombre=${nombre}`);
+  verProductosFiltrados(nombre: string, username: string){
+    return this.http.get<Producto[]>(`${this.baseUrl}/filter?nombre=${nombre}&username=${username}`);
   }
 
   

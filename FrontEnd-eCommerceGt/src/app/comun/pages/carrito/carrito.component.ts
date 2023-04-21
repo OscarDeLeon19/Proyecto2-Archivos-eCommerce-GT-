@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/interfaces/interfaces';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Producto, Usuario } from 'src/app/interfaces/interfaces';
 import Swal from 'sweetalert2';
 import { MenuItem } from 'primeng/api';
+import { ComunService } from '../../services/comun.service';
+import { NgForm } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-carrito',
@@ -10,10 +13,22 @@ import { MenuItem } from 'primeng/api';
 })
 export class CarritoComponent implements OnInit {
 
+  @ViewChild("miFormulario") miFormulario!: NgForm;
+
   items: MenuItem[] = [];
   productos: Producto[] = [];
   total: number = 0;
   textoTotal: string = "Total: 0";
+  usuario?: Usuario;
+
+
+
+  constructor(private comunService: ComunService) {
+    let myMoment= moment().format('L')
+    console.log(myMoment);
+    this.comunService.obtenerUsuario();
+    this.usuario = comunService.getUsuario();
+  }
 
   ngOnInit(): void {
     const datosCarrito = localStorage.getItem("carrito");
@@ -45,7 +60,18 @@ export class CarritoComponent implements OnInit {
         label: 'Pagar Carrito',
         icon: 'pi pi-fw pi-dollar',
         command: (event: any) => {
-
+          const {numTarjeta} = this.miFormulario.value;
+          if(!numTarjeta){
+            Swal.fire({
+              icon: 'warning',
+              title: 'Error',
+              text: 'Debes ingresar una tarjeta de credito para el pago'
+            })
+          } else {
+             const venta:any[] = [];
+             const comprador = this.usuario?.username;
+             const tarjetaCredito = numTarjeta;
+          }
         }
       }
     ];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Producto } from 'src/app/interfaces/interfaces';
+import { Producto, Usuario } from 'src/app/interfaces/interfaces';
 import { ComunService } from '../../services/comun.service';
 import Swal from 'sweetalert2';
 
@@ -12,12 +12,13 @@ export class VerProductosComponent implements OnInit {
   // alacritty
   productos: Producto[] = [];
   textoBusqueda: string = "";
+  usuario?: Usuario = this.comunService.getUsuario();
 
   constructor(private comunService: ComunService) { }
 
 
   ngOnInit(): void {
-    this.comunService.verProductos()
+    this.comunService.verProductos(this.usuario!.username)
       .subscribe({
         next: (res: Producto[]) => {
           this.productos = res;
@@ -26,7 +27,7 @@ export class VerProductosComponent implements OnInit {
   }
 
   buscar() {
-    this.comunService.verProductosFiltrados(this.textoBusqueda)
+    this.comunService.verProductosFiltrados(this.textoBusqueda, this.usuario!.username)
       .subscribe({
         next: (res: Producto[]) => {
           this.productos = res;

@@ -1,12 +1,30 @@
 <div class="container">
+
+
     <h1>Carrito de Compras</h1>
     <p-menubar [model]="items">
         <ng-template pTemplate="start">
             <div>
-                <input type="text" [(ngModel)]="textoTotal" class="form-control"  [disabled] = "true">
+                <input type="text" [(ngModel)]="textoTotal" class="form-control" [disabled]="true">
             </div>
         </ng-template>
     </p-menubar>
+
+    <div class="text-light bg-primary m-1 p-3" >
+        <form #miFormulario = "ngForm">
+            <div class="form-group">
+                <label for="card-type">Elije tu tarjeta de credito para realizar tu pago</label>
+                <select class="form-control" name="numTarjeta" ngModel id="card-type" required>
+                    <option value="" selected disabled>Seleccione tu tarjeta de credito</option>
+                    <option *ngFor="let item of usuario!.tarjetas" [value]="item.numero">{{item.numero}}</option>
+                </select>
+            </div>
+            <div class="form-group mt-2">
+                <div class="form-control">¿No tienes una tarjeta? <a routerLink="/comun/tarjeta">Ingresa una aqui</a></div>
+            </div>
+        </form>
+    </div>
+
     <div class="row">
         <div class="col-sm-4 mb-3 mt-3" *ngFor="let pr of productos; let i = index">
             <p-card [header]="pr.nombre" subheader="{{pr.precio}}" [style]="{ width: '360px'}">
