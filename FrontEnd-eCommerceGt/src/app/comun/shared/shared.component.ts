@@ -34,7 +34,7 @@ export class SharedComponent {
         items: [
           { label: 'Ver Productos', icon: 'pi pi-fw pi-box', routerLink: "/comun/productos" },
           { label: 'Agregar Producto', icon: 'pi pi-fw pi-plus' },
-          { label: 'Rastrear Pedido', icon: 'pi pi-fw pi-truck' }
+          { label: 'Rastrear Pedido', icon: 'pi pi-fw pi-truck', routerLink: "/comun/pedidos" }
         ]
       },
       {

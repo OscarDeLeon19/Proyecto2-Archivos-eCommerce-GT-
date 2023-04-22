@@ -4,6 +4,7 @@ import { MainComponent } from './pages/main/main.component';
 import { VerProductosComponent } from './pages/ver-productos/ver-productos.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas.component';
+import { RastrearPedidoComponent } from './pages/rastrear-pedido/rastrear-pedido.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       {path: "productos", component: VerProductosComponent},
       {path: "carrito", component: CarritoComponent},
       {path: "tarjeta", component: ManejoTarjetasComponent},
+      {path: "pedidos", component: RastrearPedidoComponent},
       {path: "**", redirectTo: "productos" },
     ]
   }

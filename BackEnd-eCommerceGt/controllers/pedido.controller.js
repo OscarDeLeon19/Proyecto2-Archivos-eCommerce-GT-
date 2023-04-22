@@ -21,7 +21,8 @@ const insertarPedido = async (req = request, res = response) => {
 const verPedidos = async (req = request, res = response) => {
     try {
         const { username } = req.query;
-        const busqueda = await Pedido.find({ username });
+        console.log(username);
+        const busqueda = await Pedido.find({ "comprador" :username });
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({

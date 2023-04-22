@@ -6,4 +6,6 @@ const controllerPedido = require("../controllers/pedido.controller");
 
 router.post('/insert', controllerPedido.insertarPedido);
 
+router.get("/", controllerPedido.verPedidos);
+
 module.exports = router;

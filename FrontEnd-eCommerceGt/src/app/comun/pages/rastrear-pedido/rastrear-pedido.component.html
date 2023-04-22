@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Estado de Pedido</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fecha de Entrega</th>
+                <th>Estado</th>
+                <th>Total</th>
+                <th>Productos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of pedidos">
+                <td>{{item.fechaEntrega}}</td>
+                <td>{{item.estado}}</td>
+                <td>{{item.total}}</td>
+                <td>
+                    <ul *ngFor="let pr of item.productos">
+                        <li>{{pr.nombre}}</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
