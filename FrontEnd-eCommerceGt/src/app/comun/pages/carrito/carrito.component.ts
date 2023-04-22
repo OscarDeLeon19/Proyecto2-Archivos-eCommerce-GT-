@@ -72,40 +72,53 @@ export class CarritoComponent implements OnInit {
       })
     } else {
       if (this.productos.length > 0) {
-        const venta: Venta[] = [];
-        const comprador = this.usuario!.username;
-        const tarjetaCredito = numTarjeta;
-        const fecha = moment().format("YYYY-MM-DD");
-        const ventaPedido: any[] = [];
-        this.productos.forEach((pr) => {
-          venta.push({
-            comprador,
-            tarjetaCredito,
-            fecha,
-            producto: pr.nombre,
-            precio: pr.precio,
-            vendedor: pr.usuario,
-            idProducto: pr._id
-          });
 
-          ventaPedido.push({
-            nombre: pr.nombre,
-            precio: pr.precio,
-            usuarioVendedor: pr.usuario
-          })
-        });
+        Swal.fire({
+          title: '¿Seguro que quieres realizar esta compra?',
+          text: "El total es de " + this.total,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Realizar compra'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const venta: Venta[] = [];
+            const comprador = this.usuario!.username;
+            const tarjetaCredito = numTarjeta;
+            const fecha = moment().format("YYYY-MM-DD");
+            const ventaPedido: any[] = [];
+            this.productos.forEach((pr) => {
+              venta.push({
+                comprador,
+                tarjetaCredito,
+                fecha,
+                producto: pr.nombre,
+                precio: pr.precio,
+                vendedor: pr.usuario,
+                idProducto: pr._id
+              });
 
-        const fechaEntrega = moment().add(5, "days").format("YYYY-MM-DD");
-        const pedido: Pedido = {
-          comprador,
-          fechaRealizacion: fecha,
-          fechaEntrega,
-          total: this.total,
-          direccion: this.usuario!.direccion,
-          productos: ventaPedido,
-          estado: 'En curso'
-        }
-        this.guardarVenta(venta, pedido);
+              ventaPedido.push({
+                nombre: pr.nombre,
+                precio: pr.precio,
+                usuarioVendedor: pr.usuario
+              })
+            });
+
+            const fechaEntrega = moment().add(5, "days").format("YYYY-MM-DD");
+            const pedido: Pedido = {
+              comprador,
+              fechaRealizacion: fecha,
+              fechaEntrega,
+              total: this.total,
+              direccion: this.usuario!.direccion,
+              productos: ventaPedido,
+              estado: 'En curso'
+            }
+            this.guardarVenta(venta, pedido);
+          }
+        })
       } else {
         Swal.fire({
           icon: 'warning',
@@ -116,9 +129,34 @@ export class CarritoComponent implements OnInit {
     }
   }
 
-  guardarVenta(venta:Venta[], pedido: Pedido){
-    console.log(venta);
-    console.log(pedido);
+  guardarVenta(venta: Venta[], pedido: Pedido) {
+
+    this.comunService.ingresarVenta(venta)
+      .subscribe({
+        next: (result) => {
+          console.log(result);
+        },
+        error: (err) => console.log(err)
+      });
+    this.comunService.ingresarPedido(pedido)
+      .subscribe({
+        next: (result) => {
+          console.log(result);
+        },
+        error: (err) => console.log(err)
+      });
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Gracias por comprar!',
+      text: 'Los articulos te seran entregados el: ' + pedido.fechaEntrega
+    });
+
+    localStorage.removeItem("carrito");
+    this.productos = [];
+    this.obtenerTotal();
+    this.miFormulario.reset();
+    this.miFormulario.setValue({ numTarjeta: "" });
   }
 
   borrarDelCarrito(index: number) {

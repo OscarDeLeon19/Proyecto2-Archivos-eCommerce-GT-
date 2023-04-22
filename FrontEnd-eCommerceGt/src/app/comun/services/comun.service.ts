@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Producto, Usuario } from 'src/app/interfaces/interfaces';
+import { Pedido, Producto, Usuario, Venta } from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComunService {
 
-  baseUrl: string = "http://localhost:3000/productos";
-
+  baseUrlProductos: string = "http://localhost:3000/productos";
+  baseUrlVenta: string = "http://localhost:3000/venta";
+  baseUrlPedido: string = "http://localhost:3000/pedido";
+  
   usuario?: Usuario;
 
   constructor(private router: Router, private http: HttpClient) { }
@@ -28,13 +30,20 @@ export class ComunService {
   }
 
   verProductos(username: string){
-    console.log(username);
-    return this.http.get<Producto[]>(`${this.baseUrl}/all?username=${username}`);
+    return this.http.get<Producto[]>(`${this.baseUrlProductos}/all?username=${username}`);
   }
 
   verProductosFiltrados(nombre: string, username: string){
-    return this.http.get<Producto[]>(`${this.baseUrl}/filter?nombre=${nombre}&username=${username}`);
+    return this.http.get<Producto[]>(`${this.baseUrlProductos}/filter?nombre=${nombre}&username=${username}`);
   }
-
+  
+    ingresarVenta(body: Venta[]){
+      return this.http.post(`${this.baseUrlVenta}/insert`, body);
+    }
+  
+  
+    ingresarPedido(body: Pedido){
+      return this.http.post(`${this.baseUrlPedido}/insert`, body);
+    }
   
 }
