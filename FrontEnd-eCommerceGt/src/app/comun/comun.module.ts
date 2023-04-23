@@ -17,6 +17,9 @@ import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas
 import { TarjetasUsuarioComponent } from './components/tarjetas-usuario/tarjetas-usuario.component';
 import { RastrearPedidoComponent } from './pages/rastrear-pedido/rastrear-pedido.component';
 import { ModificarInformacionComponent } from './pages/modificar-informacion/modificar-informacion.component';
+import { AgregarProductoComponent } from './pages/agregar-producto/agregar-producto.component';
+import { MisProductosComponent } from './pages/mis-productos/mis-productos.component';
+import { ModificarProductoComponent } from './pages/modificar-producto/modificar-producto.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ModificarInformacionComponent } from './pages/modificar-informacion/mod
     ManejoTarjetasComponent,
     TarjetasUsuarioComponent,
     RastrearPedidoComponent,
-    ModificarInformacionComponent
+    ModificarInformacionComponent,
+    AgregarProductoComponent,
+    MisProductosComponent,
+    ModificarProductoComponent
   ],
   imports: [
     CommonModule,

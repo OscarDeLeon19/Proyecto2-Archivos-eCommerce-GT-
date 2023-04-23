@@ -24,7 +24,7 @@ export class CarritoComponent implements OnInit {
 
 
   constructor(private comunService: ComunService) {
-    this.comunService.obtenerUsuario();
+    //this.comunService.obtenerUsuario();
     this.usuario = comunService.getUsuario();
   }
 
@@ -33,7 +33,7 @@ export class CarritoComponent implements OnInit {
     if (datosCarrito) {
       this.productos = JSON.parse(datosCarrito);
       this.obtenerTotal();
-    };
+    }
     this.items = [
       {
         label: 'Borrar Carrito',

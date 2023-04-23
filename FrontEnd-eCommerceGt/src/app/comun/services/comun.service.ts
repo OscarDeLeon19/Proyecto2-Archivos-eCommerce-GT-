@@ -14,14 +14,18 @@ export class ComunService {
 
   usuario?: Usuario;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    console.log("Activacion");
+    this.obtenerUsuario();
+  }
 
   obtenerUsuario() {
     let jsonUser = localStorage.getItem("usuario");
     if (jsonUser) {
       this.usuario = JSON.parse(jsonUser);
     } else {
-      this.router.navigate(['']);
+      console.log('Adios');
+      this.router.navigate(['/auth/login']);
     }
   }
 
@@ -50,4 +54,16 @@ export class ComunService {
     return this.http.get<Pedido[]>(`${this.baseUrlPedido}?username=${username}`);
   }
 
+  agregarProducto(body: any){
+    return this.http.post(`${this.baseUrlProductos}/agregar`, body);
+  }
+
+
+  verMisProductos(username: string) {
+    return this.http.get<Producto[]>(`${this.baseUrlProductos}/misProductos?username=${username}`);
+  }
+
+  verProductoPorId(id: string) {
+    return this.http.get<Producto>(`${this.baseUrlProductos}/verProductoId?id=${id}`);
+  }
 }

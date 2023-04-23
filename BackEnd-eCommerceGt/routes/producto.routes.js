@@ -7,4 +7,11 @@ const controllerProducto = require("../controllers/producto.controller");
 router.get('/all', controllerProducto.verProductos);
 
 router.get('/filter', controllerProducto.verProductosFiltrados);
+
+router.post('/agregar', controllerProducto.agregarProducto);
+
+router.get('/misProductos', controllerProducto.verMisProductos);
+
+router.get('/verProductoId', controllerProducto.verProductoPorId);
+
 module.exports = router;

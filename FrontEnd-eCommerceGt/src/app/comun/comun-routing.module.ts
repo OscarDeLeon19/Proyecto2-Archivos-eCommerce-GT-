@@ -6,6 +6,9 @@ import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas.component';
 import { RastrearPedidoComponent } from './pages/rastrear-pedido/rastrear-pedido.component';
 import { ModificarInformacionComponent } from './pages/modificar-informacion/modificar-informacion.component';
+import { AgregarProductoComponent } from './pages/agregar-producto/agregar-producto.component';
+import { MisProductosComponent } from './pages/mis-productos/mis-productos.component';
+import { ModificarProductoComponent } from './pages/modificar-producto/modificar-producto.component';
 
 const routes: Routes = [
   {
@@ -17,6 +20,9 @@ const routes: Routes = [
       {path: "tarjeta", component: ManejoTarjetasComponent},
       {path: "pedidos", component: RastrearPedidoComponent},
       {path: "modificar", component: ModificarInformacionComponent},
+      {path: "agregarProducto", component: AgregarProductoComponent},
+      {path: "misProductos", component: MisProductosComponent},
+      {path: "modificarProducto", component: ModificarProductoComponent},
       {path: "**", redirectTo: "productos" },
     ]
   }
