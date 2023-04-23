@@ -1,0 +1,50 @@
+<div class="container border formulario mt-3">
+    <h1>Modifica los datos que desees</h1>
+    <h3>Ingresa tus datos</h3>
+    <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+            <span class="form-text text-danger" *ngIf="campoValido('nombre')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Telefono</label>
+            <input type="number" class="form-control" placeholder="Telefono" formControlName="telefono">
+            <span class="form-text text-danger" *ngIf="campoValido('telefono')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="text" class="form-control" placeholder="Correo electronico" formControlName="correo">
+            <span class="form-text text-danger" *ngIf="campoValido('correo')">
+                Este campo es requerido. Maximo 100 caracteres y debe ser un email.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
+            <span class="form-text text-danger" *ngIf="campoValido('direccion')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento">
+            <span class="form-text text-danger" *ngIf="campoValido('fechaNacimiento')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">
+                    Actualizar Informacion
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+ 

@@ -12,4 +12,6 @@ router.put('/addCard', controllerUsuario.agregarTarjeta);
 
 router.put('/deleteCard', controllerUsuario.borrarTarjeta);
 
+router.put('/update', controllerUsuario.actualizarUsuario);
+
 module.exports = router;

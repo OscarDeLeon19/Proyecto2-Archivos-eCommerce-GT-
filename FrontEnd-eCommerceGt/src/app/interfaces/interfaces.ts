@@ -5,7 +5,7 @@ export interface Usuario{
     telefono: string,
     correo: string,
     direccion: string,
-    fechaNacimiento: Date,
+    fechaNacimiento:string,
     username:string,
     password: string,
     tipoUsuario: string,

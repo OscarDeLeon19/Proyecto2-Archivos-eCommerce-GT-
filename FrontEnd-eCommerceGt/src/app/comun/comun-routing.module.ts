@@ -5,6 +5,7 @@ import { VerProductosComponent } from './pages/ver-productos/ver-productos.compo
 import { CarritoComponent } from './pages/carrito/carrito.component';
 import { ManejoTarjetasComponent } from './pages/manejo-tarjetas/manejo-tarjetas.component';
 import { RastrearPedidoComponent } from './pages/rastrear-pedido/rastrear-pedido.component';
+import { ModificarInformacionComponent } from './pages/modificar-informacion/modificar-informacion.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path: "carrito", component: CarritoComponent},
       {path: "tarjeta", component: ManejoTarjetasComponent},
       {path: "pedidos", component: RastrearPedidoComponent},
+      {path: "modificar", component: ModificarInformacionComponent},
       {path: "**", redirectTo: "productos" },
     ]
   }

@@ -24,7 +24,7 @@ export class SharedComponent {
         label: 'Informacion',
         icon: 'pi pi-fw pi-user',
         items: [
-        { label: 'Modificar Informacion', icon: "pi pi-fw pi-user-edit" },
+        { label: 'Modificar Informacion', icon: "pi pi-fw pi-user-edit", routerLink: "/comun/modificar" },
         { label: 'Agregar Tarjeta', icon: "pi pi-fw pi-wallet", routerLink: "/comun/tarjeta" },
         ]
       },

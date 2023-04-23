@@ -8,7 +8,7 @@ const usuarioSchema = new Schema({
     telefono: String,
     correo: String,
     direccion: String,
-    fechaNacimiento: Date,
+    fechaNacimiento: String,
     username: String,
     password: String,
     tipoUsuario: String,

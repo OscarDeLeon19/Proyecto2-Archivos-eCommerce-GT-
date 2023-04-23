@@ -31,12 +31,33 @@ const buscarUsuarioLogin = async (req = request, res = response) => {
     }
 }
 
+const actualizarUsuario = async (req = request, res = response) => {
+    try {
+        const { username, nombre, telefono, correo, direccion, fechaNacimiento } = req.body;
+        const busqueda = await Usuario.updateOne({ username }, {
+            $set: {
+                nombre,
+                telefono,
+                correo,
+                direccion,
+                fechaNacimiento
+            }
+        });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar un usuario`,
+            error
+        });
+    }
+}
+
 const agregarTarjeta = async (req = request, res = response) => {
     try {
         const { username, tarjeta } = req.body;
         const busqueda = await Usuario.updateOne(
-            { username }, {$push: { tarjetas: tarjeta }}
-        ); 
+            { username }, { $push: { tarjetas: tarjeta } }
+        );
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({
@@ -50,8 +71,8 @@ const borrarTarjeta = async (req = request, res = response) => {
     try {
         const { username, numero } = req.body;
         const busqueda = await Usuario.updateOne(
-            { username }, {$pull: { tarjetas: {numero} }}
-        ); 
+            { username }, { $pull: { tarjetas: { numero } } }
+        );
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({
@@ -65,5 +86,6 @@ module.exports = {
     insertarUsuario,
     buscarUsuarioLogin,
     agregarTarjeta,
-    borrarTarjeta
+    borrarTarjeta,
+    actualizarUsuario
 }

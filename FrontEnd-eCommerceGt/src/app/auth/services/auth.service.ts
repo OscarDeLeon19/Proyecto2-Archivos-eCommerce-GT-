@@ -26,4 +26,8 @@ export class AuthService {
   borrarTarjeta(body: any){
     return this.http.put(`${this.baseUrl}/deleteCard`,body);
   }
+
+  actualizarUsuario(body: any){
+    return this.http.put(`${this.baseUrl}/update`,body);
+  }
 }
