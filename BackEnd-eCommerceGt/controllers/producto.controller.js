@@ -104,6 +104,7 @@ const borrarProducto = async (req = request, res = response) => {
     }
 }
 
+
 module.exports = {
     verProductos,
     verProductosFiltrados,

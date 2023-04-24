@@ -72,6 +72,10 @@ export class ComunService {
   }
 
   borrarProducto(_id: string) {
-    return this.http.delete(`${this.baseUrlProductos}/borrarProducto?_id=${_id}`);
+    return this.http.delete(`${this.baseUrlProductos}/borrarProducto?_id=${_id}`, { body : [{}]});
+  }
+
+  borrarVariosProductos(body: any) {
+    return this.http.delete(`${this.baseUrlProductos}/borrarVariosProducto`, { body});
   }
 }

@@ -88,6 +88,7 @@ export class CarritoComponent implements OnInit {
             const tarjetaCredito = numTarjeta;
             const fecha = moment().format("YYYY-MM-DD");
             const ventaPedido: any[] = [];
+            const idsEliminar: any[] = [];
             this.productos.forEach((pr) => {
               venta.push({
                 comprador,
@@ -104,6 +105,10 @@ export class CarritoComponent implements OnInit {
                 precio: pr.precio,
                 usuarioVendedor: pr.usuario
               })
+
+              idsEliminar.push(
+                { _id: pr._id }
+              )
             });
 
             const fechaEntrega = moment().add(5, "days").format("YYYY-MM-DD");
@@ -116,7 +121,7 @@ export class CarritoComponent implements OnInit {
               productos: ventaPedido,
               estado: 'En curso'
             }
-            this.guardarVenta(venta, pedido);
+            this.guardarVenta(venta, pedido, idsEliminar);
           }
         })
       } else {
@@ -129,7 +134,7 @@ export class CarritoComponent implements OnInit {
     }
   }
 
-  guardarVenta(venta: Venta[], pedido: Pedido) {
+  guardarVenta(venta: Venta[], pedido: Pedido, eliminacion: any[]) {
 
     this.comunService.ingresarVenta(venta)
       .subscribe({
@@ -145,6 +150,16 @@ export class CarritoComponent implements OnInit {
         },
         error: (err) => console.log(err)
       });
+
+    for (let i = 0; i < eliminacion.length; i++) {
+      const _id = eliminacion[i]._id;
+      this.comunService.borrarProducto(_id)
+        .subscribe({
+          next: (e) => { console.log(e); },
+          error: (e) => { console.log(e); }
+        });
+
+    }
 
     Swal.fire({
       icon: 'success',
