@@ -15,6 +15,7 @@ export class ModificarProductoComponent implements OnInit {
   idProducto: string = "";
   producto!: Producto;
   imagenProducto: string = "";
+  MAXIMO_TAMANIO_BYTES = 1000000;
 
   miFormulario: FormGroup = this.fb.group({
     nombre: ["", [Validators.required]],
@@ -47,6 +48,28 @@ export class ModificarProductoComponent implements OnInit {
 
   }
 
+  onChange(event: any) {
+    try {
+      const file: File = event.target.files[0];
+      const reader = new FileReader();
+      if (file?.size > this.MAXIMO_TAMANIO_BYTES) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'La imagen es muy pesada, busca alguna que pese menos de 1MB',
+        });
+      } else {
+        reader.onload = (e: any) => {
+          const base64Image = e.target.result;
+          this.imagenProducto = base64Image;
+        };
+        reader.readAsDataURL(file);
+      }
+    } catch (error) {
+      this.imagenProducto = this.producto.imagen;
+    }
+  }
+
   guardar() {
     if (this.miFormulario.invalid) {
       Swal.fire({
@@ -54,9 +77,35 @@ export class ModificarProductoComponent implements OnInit {
         title: 'Error',
         text: "No has llenado todos los campos",
       });
-
       return;
     } else {
+      const { nombre, descripcion, precio, categoria } = this.miFormulario.value;
+
+
+      const body = {
+        _id: this.producto._id,
+        nombre,
+        descripcion,
+        precio,
+        imagen: this.imagenProducto,
+        categoria
+      }
+
+      this.comunService.actualizarProducto(body)
+        .subscribe({
+          next: (result: any) => {
+            if (result.modifiedCount == 1) {
+              Swal.fire({
+                icon: 'success',
+                title: 'Exito',
+                text: 'Se actualizaron los datos del producto',
+              });
+            }
+          },
+          error: (e) => { console.log(e); }
+        });
+
+
     }
   }
 }

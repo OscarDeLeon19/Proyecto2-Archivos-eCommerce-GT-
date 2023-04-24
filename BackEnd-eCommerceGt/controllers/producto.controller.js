@@ -1,6 +1,6 @@
 const { request, response } = require("express");
 const Producto = require("../models/Producto");
-
+const { ObjectId } = require("mongodb");
 
 const verProductos = async (req = request, res = response) => {
     try {
@@ -44,7 +44,7 @@ const agregarProducto = async (req = request, res = response) => {
 const verMisProductos = async (req = request, res = response) => {
     try {
         const { username } = req.query;
-        const busqueda = await Producto.find({ "usuario":  username });
+        const busqueda = await Producto.find({ "usuario": username });
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({
@@ -67,10 +67,35 @@ const verProductoPorId = async (req = request, res = response) => {
     }
 }
 
+const actualizarProducto = async (req = request, res = response) => {
+    try {
+        const { _id, nombre, descripcion, precio, categoria, imagen } = req.body;
+        const actualizacion = await Producto.updateOne({ "_id": new ObjectId(_id) },
+            {
+                $set: {
+                    nombre,
+                    descripcion,
+                    precio,
+                    imagen,
+                    categoria
+                }
+            });
+        res.status(200).json(actualizacion);
+    } catch (error) {
+        console.log(error);
+
+        res.status(404).json({
+            message: `Error al actualizar Producto`,
+            error
+        });
+    }
+}
+
 module.exports = {
     verProductos,
     verProductosFiltrados,
     agregarProducto,
     verMisProductos,
-    verProductoPorId
+    verProductoPorId,
+    actualizarProducto
 }

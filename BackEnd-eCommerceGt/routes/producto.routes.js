@@ -14,4 +14,6 @@ router.get('/misProductos', controllerProducto.verMisProductos);
 
 router.get('/verProductoId', controllerProducto.verProductoPorId);
 
+router.put('/actualizarProducto', controllerProducto.actualizarProducto);
+
 module.exports = router;

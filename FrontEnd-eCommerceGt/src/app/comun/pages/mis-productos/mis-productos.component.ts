@@ -28,7 +28,6 @@ export class MisProductosComponent implements OnInit {
   }
 
   modificar(i: number) {
-    console.log(this.productos[i]);
     this.router.navigate(["/comun/modificarProducto"],{ queryParams: { "id": this.productos[i]._id } });
   }
 

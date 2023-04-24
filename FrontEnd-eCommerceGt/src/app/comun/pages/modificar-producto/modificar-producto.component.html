@@ -35,7 +35,7 @@
             <img [src]="imagenProducto" class="p-3" width="300" height="250">
             <div class="form-group">
                 <label for="imagen">Sube una nueva imagen:</label>
-                <input type="file" class="form-control" id="miInput" name="imagen" accept="image/*">
+                <input type="file" class="form-control" id="miInput" name="imagen" accept="image/*" (change)="onChange($event)">
             </div>
         </div>
     </div>

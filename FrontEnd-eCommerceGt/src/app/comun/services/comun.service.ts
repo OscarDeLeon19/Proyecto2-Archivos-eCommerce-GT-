@@ -66,4 +66,8 @@ export class ComunService {
   verProductoPorId(id: string) {
     return this.http.get<Producto>(`${this.baseUrlProductos}/verProductoId?id=${id}`);
   }
+
+  actualizarProducto(body: any) {
+    return this.http.put(`${this.baseUrlProductos}/actualizarProducto`, body);
+  }
 }
