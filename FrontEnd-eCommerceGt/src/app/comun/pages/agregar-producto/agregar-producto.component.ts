@@ -91,8 +91,8 @@ export class AgregarProductoComponent {
             next: (e) => {
               Swal.fire({
                 icon: 'success',
-                title: 'good',
-                text: "No has seleccionado una imagen valida",
+                title: 'Muy Bien!',
+                text: "El producto se guardo correctamente, espera la confirmacion",
               });
               this.miFormulario.reset();
               this.img = "";

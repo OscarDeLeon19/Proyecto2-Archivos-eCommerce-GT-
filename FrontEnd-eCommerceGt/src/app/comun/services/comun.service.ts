@@ -70,4 +70,8 @@ export class ComunService {
   actualizarProducto(body: any) {
     return this.http.put(`${this.baseUrlProductos}/actualizarProducto`, body);
   }
+
+  borrarProducto(_id: string) {
+    return this.http.delete(`${this.baseUrlProductos}/borrarProducto?_id=${_id}`);
+  }
 }

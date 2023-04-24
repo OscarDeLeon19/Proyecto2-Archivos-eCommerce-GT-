@@ -13,8 +13,8 @@ const app = express();
 app.use(cors());
 
 // Body Parser
-app.use(bp.json({limit: "1mb"}));
-app.use(bp.urlencoded({ extended: true, limit: "1mb" }));
+app.use(bp.json({limit: "2mb"}));
+app.use(bp.urlencoded({ extended: true, limit: "2mb" }));
 
 app.listen(3000);
 

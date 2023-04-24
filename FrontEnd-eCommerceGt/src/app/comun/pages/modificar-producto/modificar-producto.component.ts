@@ -80,8 +80,6 @@ export class ModificarProductoComponent implements OnInit {
       return;
     } else {
       const { nombre, descripcion, precio, categoria } = this.miFormulario.value;
-
-
       const body = {
         _id: this.producto._id,
         nombre,
@@ -90,7 +88,6 @@ export class ModificarProductoComponent implements OnInit {
         imagen: this.imagenProducto,
         categoria
       }
-
       this.comunService.actualizarProducto(body)
         .subscribe({
           next: (result: any) => {

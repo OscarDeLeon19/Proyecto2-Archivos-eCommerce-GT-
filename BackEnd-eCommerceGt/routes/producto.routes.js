@@ -16,4 +16,6 @@ router.get('/verProductoId', controllerProducto.verProductoPorId);
 
 router.put('/actualizarProducto', controllerProducto.actualizarProducto);
 
+router.delete('/borrarProducto', controllerProducto.borrarProducto);
+
 module.exports = router;

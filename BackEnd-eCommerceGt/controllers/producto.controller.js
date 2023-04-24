@@ -91,11 +91,25 @@ const actualizarProducto = async (req = request, res = response) => {
     }
 }
 
+const borrarProducto = async (req = request, res = response) => {
+    try {
+        const { _id } = req.query;
+        const eliminar = await Producto.deleteOne({ "_id": new ObjectId(_id) });
+        res.status(200).json(eliminar);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al actualizar Producto`,
+            error
+        });
+    }
+}
+
 module.exports = {
     verProductos,
     verProductosFiltrados,
     agregarProducto,
     verMisProductos,
     verProductoPorId,
-    actualizarProducto
+    actualizarProducto,
+    borrarProducto
 }
