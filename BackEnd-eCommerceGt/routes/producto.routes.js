@@ -18,4 +18,8 @@ router.put('/actualizarProducto', controllerProducto.actualizarProducto);
 
 router.delete('/borrarProducto', controllerProducto.borrarProducto);
 
+router.get('/pendientes', controllerProducto.verProductosPendientes);
+
+router.put('/cambiarEstado', controllerProducto.cambiarEstado);
+
 module.exports = router;

@@ -9,6 +9,9 @@ import { MenubarModule } from 'primeng/menubar';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { ModificarFechaComponent } from './pages/modificar-fecha/modificar-fecha.component';
 import { FormsModule } from '@angular/forms';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -17,13 +20,16 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     PrincipalComponent,
     PedidosComponent,
-    ModificarFechaComponent
+    ModificarFechaComponent,
+    SolicitudesComponent
   ],
   imports: [
     CommonModule,
     PaqueteriaRoutingModule,
     MenubarModule,
-    FormsModule
+    FormsModule,
+    CardModule,
+    ButtonModule
   ]
 })
 export class PaqueteriaModule { }

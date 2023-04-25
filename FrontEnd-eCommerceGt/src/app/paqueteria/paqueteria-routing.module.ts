@@ -4,6 +4,7 @@ import { MainComponent } from './pages/main/main.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { ModificarFechaComponent } from './pages/modificar-fecha/modificar-fecha.component';
+import { SolicitudesComponent } from './pages/solicitudes/solicitudes.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,6 +13,7 @@ const routes: Routes = [{
     {path: "principal", component: PrincipalComponent},
     {path: "pedidos", component: PedidosComponent},
     {path: "modificarFecha", component: ModificarFechaComponent},
+    {path: "solicitudes", component: SolicitudesComponent},
     {path: "**", redirectTo: "principal" },
   ]
 }];

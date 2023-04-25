@@ -9,6 +9,7 @@ import { Pedido, Producto, Usuario } from 'src/app/interfaces/interfaces';
 export class PaqueteriaService {
 
   baseUrlPedidos: string = "http://localhost:3000/pedido";
+  baseUrlProductos: string = "http://localhost:3000/productos";
   usuario?: Usuario;
 
   constructor(private router: Router, private http: HttpClient) {
@@ -43,6 +44,14 @@ export class PaqueteriaService {
 
   cambiarFechaEntrega(body: any){
     return this.http.put(`${this.baseUrlPedidos}/cambiarFechaEntrega`, body);
+  }
+
+  verProductosPendientes(){
+    return this.http.get<Producto[]>(`${this.baseUrlProductos}/pendientes`);
+  }
+
+  cambiarEstadoProducto(body: any){
+    return this.http.put(`${this.baseUrlProductos}/cambiarEstado`, body);
   }
 
 }

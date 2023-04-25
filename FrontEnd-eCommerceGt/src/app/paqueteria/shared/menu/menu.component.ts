@@ -28,7 +28,8 @@ export class MenuComponent {
       },
       {
         label: 'Solicitudes de productos',
-        icon: 'pi pi-fw pi-inbox'
+        icon: 'pi pi-fw pi-inbox',
+        routerLink: ["/paqueteria/solicitudes"]
       }
     ];
   }
