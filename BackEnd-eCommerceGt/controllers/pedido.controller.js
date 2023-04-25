@@ -48,7 +48,6 @@ const verPedidosEnCurso = async (req = request, res = response) => {
 const modificarEstado = async (req = request, res = response) => {
     try {
         const { _id, estado } = req.body;
-        console.log(_id);
         const busqueda = await Pedido.updateOne({ "_id": new ObjectId(_id) },{
             $set: {
                 estado
@@ -63,9 +62,41 @@ const modificarEstado = async (req = request, res = response) => {
     }
 }
 
+const obtenerPedido = async (req = request, res = response) => {
+    try {
+        const { _id } = req.query;
+        const busqueda = await Pedido.findById({ _id });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar el pedido`,
+            error
+        });
+    }
+}
+
+const cambiarFechaEntrega = async (req = request, res = response) => {
+    try {
+        const { _id, fechaEntrega } = req.body;
+        const busqueda = await Pedido.updateOne({ "_id": new ObjectId(_id) },{
+            $set: {
+                fechaEntrega
+            }
+        });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al modificar Pedido`,
+            error
+        });
+    }
+}
+
 module.exports = {
     insertarPedido,
     verPedidos,
     verPedidosEnCurso,
-    modificarEstado
+    modificarEstado,
+    obtenerPedido,
+    cambiarFechaEntrega
 }

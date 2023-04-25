@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaqueteriaService } from '../../services/paqueteria.service';
 import { Pedido } from 'src/app/interfaces/interfaces';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos',
@@ -12,7 +13,7 @@ export class PedidosComponent implements OnInit {
 
   pedidos: Pedido[] = [];
 
-  constructor(private paqueteriaService: PaqueteriaService) {
+  constructor(private paqueteriaService: PaqueteriaService, private router: Router) {
 
   }
 
@@ -49,7 +50,7 @@ export class PedidosComponent implements OnInit {
                 Swal.fire({
                   position: 'top-end',
                   icon: 'success',
-                  title: 'Your work has been saved',
+                  title: 'El pedido se marco como entregado',
                   showConfirmButton: false,
                   timer: 1500
                 });
@@ -60,5 +61,9 @@ export class PedidosComponent implements OnInit {
           });
       }
     })
+  }
+
+  modificar(i: number) {
+    this.router.navigate(["/paqueteria/modificarFecha"], { queryParams: { "id": this.pedidos[i]._id } });
   }
 }

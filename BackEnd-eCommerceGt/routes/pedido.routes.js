@@ -12,4 +12,8 @@ router.get("/enCurso", controllerPedido.verPedidosEnCurso);
 
 router.put("/cambiarEstado", controllerPedido.modificarEstado);
 
+router.get("/obtenerPedido", controllerPedido.obtenerPedido);
+
+router.put("/cambiarFechaEntrega", controllerPedido.cambiarFechaEntrega);
+
 module.exports = router;

@@ -37,4 +37,12 @@ export class PaqueteriaService {
     return this.http.put(`${this.baseUrlPedidos}/cambiarEstado`, body);
   }
 
+  obtenerPedido(_id: string){
+    return this.http.get<Pedido>(`${this.baseUrlPedidos}/obtenerPedido?_id=${_id}`);
+  }
+
+  cambiarFechaEntrega(body: any){
+    return this.http.put(`${this.baseUrlPedidos}/cambiarFechaEntrega`, body);
+  }
+
 }

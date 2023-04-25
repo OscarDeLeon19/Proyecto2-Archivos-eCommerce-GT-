@@ -1,0 +1,20 @@
+<div class="container mt-3">
+    <h1>Informacion del Pedido</h1>
+    <h5> <span class="fw-bold"> Usuario Comprador: </span> {{pedidoActual?.comprador}}</h5> 
+    <h5> <span class="fw-bold"> Direccion: </span> {{pedidoActual?.direccion}}</h5> 
+    <h5> <span class="fw-bold"> Fecha de Realizacion: </span> {{pedidoActual?.fechaRealizacion}}</h5> 
+    <h5> <span class="fw-bold"> Productos: </span> </h5>
+    <ul>
+        <li *ngFor="let item of pedidoActual?.productos">
+            {{item.nombre}}
+        </li>
+    </ul> 
+    <h5> <span class="fw-bold"> Total </span> Q.{{pedidoActual?.total}}</h5> 
+    <form (submit)="cambiarFecha()">
+      <div class="form-group" >
+        <h5> <span class="fw-bold"> Fecha de entrega: </span> </h5>
+        <input type="date" class="form-control" [(ngModel)]="nuevaFecha" [value]="pedidoActual?.fechaEntrega" name="nuevaFecha" [min]="fechaActual" required>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Cambiar Fecha</button>
+    </form>
+  </div>

@@ -7,6 +7,8 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { MenubarModule } from 'primeng/menubar';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
+import { ModificarFechaComponent } from './pages/modificar-fecha/modificar-fecha.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
     MainComponent,
     MenuComponent,
     PrincipalComponent,
-    PedidosComponent
+    PedidosComponent,
+    ModificarFechaComponent
   ],
   imports: [
     CommonModule,
     PaqueteriaRoutingModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule
   ]
 })
 export class PaqueteriaModule { }
