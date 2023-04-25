@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Pedidos en Curso</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Comprador</th>
+                <th>Fecha de Entrega</th>
+                <th>Direccion</th>
+                <th>Total</th>
+                <th>Productos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of pedidos; let i = index">
+                <td>{{item.comprador}}</td>
+                <td>{{item.fechaEntrega}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.total}}</td>
+                <td>
+                    <ul *ngFor="let pr of item.productos">
+                        <li>{{pr.nombre}}</li>
+                    </ul>
+                </td>
+                <td>
+                    <button class="btn btn-primary mb-1" (click)="entregar(i)">Entregar</button><br>
+                    <button class="btn btn-danger">Modificar Fecha</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

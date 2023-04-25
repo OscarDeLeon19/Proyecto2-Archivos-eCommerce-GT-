@@ -31,6 +31,7 @@ export interface Tarjeta{
 }
 
 export interface Venta{
+    _id?: string,
     comprador: string,
     tarjetaCredito: string,
     fecha: Date | string, 
@@ -41,6 +42,7 @@ export interface Venta{
 }
 
 export interface Pedido{
+    _id?: string,
     comprador: string,
     fechaRealizacion: Date | string,
     fechaEntrega: Date | string,

@@ -8,4 +8,8 @@ router.post('/insert', controllerPedido.insertarPedido);
 
 router.get("/", controllerPedido.verPedidos);
 
+router.get("/enCurso", controllerPedido.verPedidosEnCurso);
+
+router.put("/cambiarEstado", controllerPedido.modificarEstado);
+
 module.exports = router;

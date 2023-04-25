@@ -72,6 +72,8 @@ export class LoginComponent {
               if (res.tipoUsuario == "Comun") {
                 console.log(res);
                 this.router.navigate(["/comun"])
+              } else if(res.tipoUsuario == "Paqueteria"){
+                this.router.navigate(["/paqueteria"])
               } else {
                 console.log('Perro');
               }

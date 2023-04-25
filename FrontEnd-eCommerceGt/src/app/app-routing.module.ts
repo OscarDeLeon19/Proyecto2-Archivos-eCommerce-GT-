@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import("./comun/comun.module").then(m => m.ComunModule)
   },
   {
+    path: "paqueteria",
+    loadChildren: () => import("./paqueteria/paqueteria.module").then(m => m.PaqueteriaModule)
+  },
+  {
     path: "**",
     redirectTo: "auth"
   }
