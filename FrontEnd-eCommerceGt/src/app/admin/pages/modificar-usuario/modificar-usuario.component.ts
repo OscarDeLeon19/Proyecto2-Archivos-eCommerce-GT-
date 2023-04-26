@@ -30,7 +30,7 @@ export class ModificarUsuarioComponent implements OnInit {
   })
 
   constructor(private route: ActivatedRoute, private adminService: AdminService, private fb: FormBuilder, private authService: AuthService,
-      private router:Router) {
+    private router: Router) {
 
   }
 
@@ -54,6 +54,8 @@ export class ModificarUsuarioComponent implements OnInit {
               direccion: resp.direccion,
               fechaNacimiento: resp.fechaNacimiento,
             });
+          } else {
+            this.router.navigate(["/admin/usuarios"])
           }
         },
         error: () => { }
@@ -103,7 +105,7 @@ export class ModificarUsuarioComponent implements OnInit {
     }
   }
 
-  volver(){
+  volver() {
     this.router.navigate(["/admin/usuarios"]);
   }
 }

@@ -24,7 +24,7 @@
                 <td>{{item.tipoUsuario}}</td>
                 <td>
                     <a (click)="modificarUsuario(i)"> <i class="pi pi-pencil mx-2"></i></a>
-                    <a> <i class="pi pi-trash"></i></a>
+                    <a (click)="eliminarUsuario(i)"> <i class="pi pi-trash"></i></a>
                 </td>
             </tr>
         </tbody>

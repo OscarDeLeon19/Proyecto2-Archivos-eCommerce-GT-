@@ -36,4 +36,8 @@ export class AdminService {
     return this.http.get<Usuario>(`${this.baseUrlUser}/buscarUsuario?username=${username}`);
   }
 
+  borrarUsuario(username: string) {
+    return this.http.delete(`${this.baseUrlUser}/borrarUsuario?username=${username}`);
+  }
+
 }

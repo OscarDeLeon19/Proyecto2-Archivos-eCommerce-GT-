@@ -18,4 +18,6 @@ router.get('/verUsuariosAdmin', controllerUsuario.verUsuariosAdmin);
 
 router.get('/buscarUsuario', controllerUsuario.buscarUsuarioUsername);
 
+router.delete('/borrarUsuario', controllerUsuario.borrarUsuario);
+
 module.exports = router;

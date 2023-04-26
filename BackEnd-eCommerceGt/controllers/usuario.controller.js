@@ -108,6 +108,19 @@ const buscarUsuarioUsername = async (req = request, res = response) => {
     }
 }
 
+const borrarUsuario = async (req = request, res = response) => {
+    try {
+        const { username } = req.query;
+        const busqueda = await Usuario.deleteOne({ username });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al eliminar usuario`,
+            error
+        });
+    }
+}
+
 module.exports = {
     insertarUsuario,
     buscarUsuarioLogin,
@@ -115,5 +128,6 @@ module.exports = {
     borrarTarjeta,
     actualizarUsuario,
     verUsuariosAdmin,
-    buscarUsuarioUsername
+    buscarUsuarioUsername,
+    borrarUsuario
 }
