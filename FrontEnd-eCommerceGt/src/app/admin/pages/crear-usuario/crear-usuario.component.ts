@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-crear-usuario',
+  templateUrl: './crear-usuario.component.html',
+  styleUrls: ['./crear-usuario.component.css']
 })
-export class RegisterComponent {
+export class CrearUsuarioComponent {
 
-  s: string = "";
+  fechaMaxima: string = "";
+  fechaMinima: string = "";
 
   // Formulario para ingresar los datos requeridos
   miFormulario: FormGroup = this.fb.group({
@@ -21,8 +23,7 @@ export class RegisterComponent {
     direccion: ["", [Validators.required]],
     fechaNacimiento: ["", [Validators.required]],
     username: ["", [Validators.required]],
-    password: ["", [Validators.required, Validators.minLength(6)]],
-    confirm: ["", [Validators.required, Validators.minLength(6),]]
+    tipoUsuario: ["", [Validators.required]]
   })
 
   /**
@@ -36,6 +37,8 @@ export class RegisterComponent {
 
 
   ngOnInit(): void {
+    this.fechaMinima = moment().subtract("65", "year").format("YYYY-MM-DD")
+    this.fechaMaxima = moment().subtract("19", "year").format("YYYY-MM-DD")
   }
 
   /**
@@ -59,7 +62,7 @@ export class RegisterComponent {
   /**
    * Obtiene las variables de los campos y llama al servicio para guardar un usuario
    * @returns 
-   */ 
+   */
   guardar() {
     if (this.miFormulario.invalid) {
       Swal.fire({
@@ -70,20 +73,21 @@ export class RegisterComponent {
       this.miFormulario.markAllAsTouched();
       return;
     } else {
-      let { nombre, telefono, correo, direccion, fechaNacimiento, username, password } = this.miFormulario.value;
+      let { nombre, telefono, correo, direccion, fechaNacimiento, username, tipoUsuario } = this.miFormulario.value;
+      const password = this.generarPassword();
       const body = {
-        nombre, telefono, correo, direccion, fechaNacimiento, username, password, tipoUsuario: "Comun"
+        nombre, telefono, correo, direccion, fechaNacimiento, username, password, tipoUsuario
       }
       this.authService.crearUsuario(body)
         .subscribe({
           next: (n: any) => {
             Swal.fire({
               icon: 'success',
-              title: 'Exito',
-              text: n.message,
+              title: 'Usuario creado',
+              text: n.message + " La contraseña es: " + password,
             });
             this.miFormulario.reset();
-            this.router.navigate(["auth/login"]);
+            this.router.navigate(["admin/usuarios"]);
           },
           error: (e) => {
             Swal.fire({
@@ -94,5 +98,18 @@ export class RegisterComponent {
           }
         });
     }
+  }
+
+  generarPassword() {
+    let password = '';
+    const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+      'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+
+    for (let i = 1; i <= 8; i++) {
+      let caracter = Math.floor(Math.random() * caracteres.length + 1);
+      password += caracteres.charAt(caracter)
+    }
+
+    return password;
   }
 }

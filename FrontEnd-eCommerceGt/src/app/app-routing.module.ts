@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import("./paqueteria/paqueteria.module").then(m => m.PaqueteriaModule)
   },
   {
+    path: "admin",
+    loadChildren: () => import("./admin/admin.module").then(m => m.AdminModule)
+  },
+  {
     path: "**",
     redirectTo: "auth"
   }

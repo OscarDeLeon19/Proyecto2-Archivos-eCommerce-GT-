@@ -96,6 +96,7 @@ export class AgregarProductoComponent {
               });
               this.miFormulario.reset();
               this.img = "";
+              this.router.navigate(["/comun/misProductos"]);
             },
             error: (err) => {
               Swal.fire({

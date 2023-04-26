@@ -34,7 +34,7 @@ export class AgregarTarjetaComponent implements OnInit {
         username: this.usuario.username,
         tarjeta: objTarjeta
       }
-      const comprobacion = this.usuario.tarjetas.find(pr => objTarjeta.numero == pr.numero);
+      const comprobacion = this.usuario.tarjetas!.find(pr => objTarjeta.numero == pr.numero);
       if (comprobacion) {
         Swal.fire({
           icon: 'error',
@@ -53,7 +53,7 @@ export class AgregarTarjetaComponent implements OnInit {
                   showConfirmButton: false,
                   timer: 1500
                 })
-                this.usuario.tarjetas.push(objTarjeta);
+                this.usuario.tarjetas!.push(objTarjeta);
                 localStorage.setItem("usuario", JSON.stringify(this.usuario));
                 setTimeout(() => { window.location.reload() }, 1500);
 

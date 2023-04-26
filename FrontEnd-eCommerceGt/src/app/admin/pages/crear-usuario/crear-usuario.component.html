@@ -1,0 +1,70 @@
+<div class="container border formulario">
+    <h1>Crea una nuevo usuario</h1>
+    <h3>Ingresa los datos del usuario</h3>
+    <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+            <span class="form-text text-danger" *ngIf="campoValido('nombre')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Telefono</label>
+            <input type="number" class="form-control" placeholder="Telefono" formControlName="telefono">
+            <span class="form-text text-danger" *ngIf="campoValido('telefono')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="text" class="form-control" placeholder="Correo electronico" formControlName="correo">
+            <span class="form-text text-danger" *ngIf="campoValido('correo')">
+                Este campo es requerido. Maximo 100 caracteres y debe ser un email.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
+            <span class="form-text text-danger" *ngIf="campoValido('direccion')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [max]="fechaMaxima" [min]="fechaMinima">
+            <span class="form-text text-danger" *ngIf="campoValido('fechaNacimiento')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" placeholder="Nombre de Usuario" formControlName="username">
+            <span class="form-text text-danger" *ngIf="campoValido('username')">
+                Debes llenar este campo
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo de Usuario</label>
+            <select class="form-select" aria-label="Default select example" formControlName = "tipoUsuario">
+                <option value=""selected disabled>Selecciona el tipo de usuario </option>
+                <option value="Paqueteria">Paqueteria</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+            <span class="form-text text-danger" *ngIf="campoValido('tipoUsuario')">
+                Debes seleccionar una opcion
+            </span>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    {{miFormulario.value | json}}
+</div>

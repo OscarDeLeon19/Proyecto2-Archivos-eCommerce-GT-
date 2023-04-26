@@ -9,7 +9,7 @@ export interface Usuario{
     username:string,
     password: string,
     tipoUsuario: string,
-    tarjetas: Tarjeta[]
+    tarjetas?: Tarjeta[]
 }
 
 export interface Producto{

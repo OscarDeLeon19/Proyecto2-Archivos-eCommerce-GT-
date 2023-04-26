@@ -22,7 +22,7 @@ export class TarjetasUsuarioComponent implements OnInit {
     const jsonUsuario = localStorage.getItem("usuario");
     if (jsonUsuario) {
       this.usuario = JSON.parse(jsonUsuario);
-      this.tarjetas = this.usuario.tarjetas;
+      this.tarjetas = this.usuario.tarjetas!;
     } else {
       this.router.navigate(["auth/login"]);
     }

@@ -14,4 +14,8 @@ router.put('/deleteCard', controllerUsuario.borrarTarjeta);
 
 router.put('/update', controllerUsuario.actualizarUsuario);
 
+router.get('/verUsuariosAdmin', controllerUsuario.verUsuariosAdmin);
+
+router.get('/buscarUsuario', controllerUsuario.buscarUsuarioUsername);
+
 module.exports = router;

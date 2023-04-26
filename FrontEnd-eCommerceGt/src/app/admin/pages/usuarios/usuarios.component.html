@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Tabla de Usuarios</h1>
+    <table class="table table-success table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Dirección</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Username</th>
+                <th>Tipo de Usuario</th>
+                <th> Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of usuarios; let i = index">
+                <td>{{item.nombre}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.correo}}</td>
+                <td>{{item.direccion}}</td>
+                <td>{{item.fechaNacimiento}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.tipoUsuario}}</td>
+                <td>
+                    <a (click)="modificarUsuario(i)"> <i class="pi pi-pencil mx-2"></i></a>
+                    <a> <i class="pi pi-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -82,10 +82,38 @@ const borrarTarjeta = async (req = request, res = response) => {
     }
 }
 
+const verUsuariosAdmin = async (req = request, res = response) => {
+    try {
+        const { username } = req.query;
+        const busqueda = await Usuario.find({ "username": { $ne: username }, $or: [{ tipoUsuario: "Paqueteria" }, { tipoUsuario: "Administrador" }] });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar usuarios`,
+            error
+        });
+    }
+}
+
+const buscarUsuarioUsername = async (req = request, res = response) => {
+    try {
+        const { username } = req.query;
+        const busqueda = await Usuario.findOne({ username });
+        res.status(200).json(busqueda);
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar un usuario`,
+            error
+        });
+    }
+}
+
 module.exports = {
     insertarUsuario,
     buscarUsuarioLogin,
     agregarTarjeta,
     borrarTarjeta,
-    actualizarUsuario
+    actualizarUsuario,
+    verUsuariosAdmin,
+    buscarUsuarioUsername
 }
