@@ -34,14 +34,16 @@ export class ModificarProductoComponent implements OnInit {
     this.comunService.verProductoPorId(this.idProducto)
       .subscribe({
         next: (e: Producto) => {
-          this.producto = e
-          this.miFormulario.setValue({
-            nombre: this.producto.nombre,
-            descripcion: this.producto.descripcion,
-            precio: this.producto.precio,
-            categoria: this.producto.categoria,
-          })
-          this.imagenProducto = this.producto.imagen
+          if (e) {
+            this.producto = e
+            this.miFormulario.setValue({
+              nombre: this.producto.nombre,
+              descripcion: this.producto.descripcion,
+              precio: this.producto.precio,
+              categoria: this.producto.categoria,
+            })
+            this.imagenProducto = this.producto.imagen
+          }
         },
         error: (e) => { console.log(e); }
       });

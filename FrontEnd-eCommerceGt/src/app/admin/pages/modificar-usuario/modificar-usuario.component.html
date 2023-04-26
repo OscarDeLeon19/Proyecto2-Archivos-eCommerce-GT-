@@ -1,1 +1,50 @@
-<p>modificar-usuario works!</p>
+<div class="container border formulario">
+    <h1>Modifica los datos del usuario</h1>
+    <form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+            <span class="form-text text-danger" *ngIf="campoValido('nombre')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Telefono</label>
+            <input type="number" class="form-control" placeholder="Telefono" formControlName="telefono">
+            <span class="form-text text-danger" *ngIf="campoValido('telefono')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="text" class="form-control" placeholder="Correo electronico" formControlName="correo">
+            <span class="form-text text-danger" *ngIf="campoValido('correo')">
+                Este campo es requerido. Maximo 100 caracteres y debe ser un email.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Direccion</label>
+            <input type="text" class="form-control" placeholder="Direccion" formControlName="direccion">
+            <span class="form-text text-danger" *ngIf="campoValido('direccion')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [max]="fechaMaxima" [min]="fechaMinima">
+            <span class="form-text text-danger" *ngIf="campoValido('fechaNacimiento')">
+                Este campo es requerido.
+            </span>
+        </div>
+        <div class="row">
+            <div class="col m-2">
+                <button type="submit" class="btn btn-primary">
+                    Crear
+                </button>
+                <button type="button" (click)="volver()" class="btn btn-success float-end">
+                    Volver
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

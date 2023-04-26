@@ -52,14 +52,6 @@ export class CrearUsuarioComponent {
   }
 
   /**
-   * Metodo que comprueba si los campos de contraseña son iguales
-   * @returns Si los campos son iguales
-   */
-  confirmarPassword() {
-    return !(this.miFormulario.value.password === this.miFormulario.value.confirm)
-  }
-
-  /**
    * Obtiene las variables de los campos y llama al servicio para guardar un usuario
    * @returns 
    */
