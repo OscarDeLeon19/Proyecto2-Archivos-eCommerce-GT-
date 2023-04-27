@@ -129,6 +129,32 @@ const cambiarEstado = async (req = request, res = response) => {
     }
 }
 
+const reporteProductosEnVenta = async (req = request, res = response) => {
+    try {
+        const reporte = await Producto.aggregate([
+            {
+                $group: {
+                    _id: "$usuario",
+                    productos: { $sum: 1 }
+                }
+            },
+            {
+                $sort: { productos: -1 }
+            },
+            {
+                $limit: 10
+            }
+        ]);
+        res.status(200).json(reporte);
+
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar productos`,
+            error
+        });
+    }
+}
+
 module.exports = {
     verProductos,
     verProductosFiltrados,
@@ -138,5 +164,6 @@ module.exports = {
     actualizarProducto,
     borrarProducto,
     verProductosPendientes,
-    cambiarEstado
+    cambiarEstado,
+    reporteProductosEnVenta
 }

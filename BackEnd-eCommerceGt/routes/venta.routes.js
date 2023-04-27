@@ -8,4 +8,8 @@ router.post('/insert', controllerVenta.insertarVenta);
 
 router.get('/reporte1', controllerVenta.reporteProductosVendidos);
 
+router.get('/reporte2', controllerVenta.reporteGanancias);
+
+router.get('/reporte3', controllerVenta.reporteVentas);
+
 module.exports = router;

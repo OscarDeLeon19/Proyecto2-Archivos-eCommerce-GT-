@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <h2 class="alert alert-success">Top 10 clientes que mas productos tienen a la venta</h2>
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Username del Usuario</th>
+                        <th scope="col">Productos en Venta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of productos; let i = index;">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item._id}}</td>
+                        <td> {{item.productos}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

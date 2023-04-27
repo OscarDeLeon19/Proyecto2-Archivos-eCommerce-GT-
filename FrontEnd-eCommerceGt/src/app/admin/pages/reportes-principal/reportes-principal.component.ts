@@ -15,19 +15,19 @@ export class ReportesPrincipalComponent {
     },
     {
       nombre: "Top 5 clientes que mas ganancias por compras han generado en un intervalo de tiempo",
-      ruta: "/admin/reportes"
+      ruta: "/admin/reporte2"
     },
     {
       nombre: "Top 5 clientes que mas productos han vendido en un intervalo de tiempo",
-      ruta: "/admin/reportes"
+      ruta: "/admin/reporte3"
     },
     {
       nombre: "Top 10 clientes que mas pedidos han realizado en un intervalo de tiempo",
-      ruta: "/admin/reportes"
+      ruta: "/admin/reporte4"
     },
     {
       nombre: "Top 10 clientes que mas productos tienen a la venta",
-      ruta: "/admin/reportes"
+      ruta: "/admin/reporte5"
     },
   ]
 

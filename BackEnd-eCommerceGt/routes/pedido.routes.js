@@ -16,4 +16,6 @@ router.get("/obtenerPedido", controllerPedido.obtenerPedido);
 
 router.put("/cambiarFechaEntrega", controllerPedido.cambiarFechaEntrega);
 
+router.get("/reporte4", controllerPedido.reportePedidos);
+
 module.exports = router;

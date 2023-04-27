@@ -20,7 +20,6 @@ const insertarVenta = async (req = request, res = response) => {
 
 const reporteProductosVendidos = async (req = request, res = response) => {
     try {
-        console.log("Hola");
         const {fechaInicial, fechaFinal} = req.query;
         const reporte = await Venta.aggregate([
             {
@@ -54,7 +53,83 @@ const reporteProductosVendidos = async (req = request, res = response) => {
     }
 }
 
+const reporteGanancias = async (req = request, res = response) => {
+    try {
+        const {fechaInicial, fechaFinal} = req.query;
+        const reporte = await Venta.aggregate([
+            {
+              $match: {
+                fecha: {
+                  $gte: fechaInicial ,
+                  $lte: fechaFinal
+                }
+              }
+            },
+            {
+              $group: {
+                _id: "$comprador",
+                ganancias: {
+                  $sum: { $multiply: [ "$precio", 0.05 ] } 
+                }
+              }
+            },
+            {
+              $sort: {
+                ganancias: -1
+              }
+            },
+            {
+              $limit: 5
+            }
+          ]);
+        res.status(200).json(reporte);
+
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al ingresar la venta`,
+            error
+        });
+    }
+}
+
+const reporteVentas = async (req = request, res = response) => {
+    try {
+        const {fechaInicial, fechaFinal} = req.query;
+        const reporte = await Venta.aggregate([
+            {
+              $match: {
+                fecha: {
+                  $gte: fechaInicial,
+                  $lte: fechaFinal
+                }
+              }
+            },
+            {
+              $group: {
+                _id: "$vendedor",
+                productos: { $sum: 1 }
+              }
+            },
+            {
+              $sort: { productos: -1 }
+            },
+            {
+              $limit: 5
+            }
+          ]);
+        res.status(200).json(reporte);
+
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al ingresar la venta`,
+            error
+        });
+    }
+}
+
 module.exports = {
     insertarVenta,
-    reporteProductosVendidos
+    reporteProductosVendidos,
+    reporteGanancias,
+    reporteVentas
 }

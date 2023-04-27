@@ -92,11 +92,47 @@ const cambiarFechaEntrega = async (req = request, res = response) => {
     }
 }
 
+const reportePedidos = async (req = request, res = response) => {
+    try {
+        const {fechaInicial, fechaFinal} = req.query;
+        const reporte = await Pedido.aggregate([
+            {
+              $match: {
+                fechaRealizacion: {
+                  $gte: fechaInicial,
+                  $lte: fechaFinal
+                }
+              }
+            },
+            {
+              $group: {
+                _id: "$comprador",
+                pedidosRealizados: { $sum: 1 }
+              }
+            },
+            {
+              $sort: { pedidosRealizados: -1 }
+            },
+            {
+              $limit: 10
+            }
+          ]);
+        res.status(200).json(reporte);
+
+    } catch (error) {
+        res.status(404).json({
+            message: `Error al buscar pedido`,
+            error
+        });
+    }
+}
+
 module.exports = {
     insertarPedido,
     verPedidos,
     verPedidosEnCurso,
     modificarEstado,
     obtenerPedido,
-    cambiarFechaEntrega
+    cambiarFechaEntrega,
+    reportePedidos
 }

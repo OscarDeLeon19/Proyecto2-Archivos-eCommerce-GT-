@@ -61,3 +61,23 @@ export interface ReporteProductos{
     _id : string,
     ventas: number
 }
+
+export interface ReporteGanancias{
+    _id : string,
+    ganancias: number
+}
+
+export interface ReporteVentas{
+    _id : string,
+    productos: number
+}
+
+export interface ReportePedidos{
+    _id : string,
+    pedidosRealizados: number
+}
+
+export interface ProductosEnVenta{
+    _id : string,
+    productos: number
+}

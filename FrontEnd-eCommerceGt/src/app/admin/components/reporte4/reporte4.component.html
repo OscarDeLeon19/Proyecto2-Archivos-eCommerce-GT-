@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h2 class="alert alert-success">Top 10 productos mas vendidos en un intervalo de tiempo</h2>
+        <h2 class="alert alert-success">Top 10 clientes que mas pedidos han realizado en un intervalo de tiempo</h2>
         <div class="col">
             <h3>Intervalo de Fechas</h3>
             <div class="container mt-3">
@@ -26,20 +26,19 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nombre del Producto</th>
-                        <th scope="col">Ventas</th>
+                        <th scope="col">Username del Usuario</th>
+                        <th scope="col">Pedidos Realizados</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of ventas; let i = index;">
                         <th scope="row">{{i+1}}</th>
                         <td>{{item._id}}</td>
-                        <td>{{item.ventas}}</td>
+                        <td> {{item.pedidosRealizados}}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
-
 </div>
+

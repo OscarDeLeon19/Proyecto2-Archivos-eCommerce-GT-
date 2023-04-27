@@ -22,4 +22,6 @@ router.get('/pendientes', controllerProducto.verProductosPendientes);
 
 router.put('/cambiarEstado', controllerProducto.cambiarEstado);
 
+router.get('/reporte5', controllerProducto.reporteProductosEnVenta);
+
 module.exports = router;
