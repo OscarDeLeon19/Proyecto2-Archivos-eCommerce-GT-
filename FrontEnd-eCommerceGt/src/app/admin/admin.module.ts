@@ -8,8 +8,10 @@ import { MenuComponent } from './shared/menu/menu.component';
 import { MenubarModule } from 'primeng/menubar';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModificarUsuarioComponent } from './pages/modificar-usuario/modificar-usuario.component';
+import { ReportesPrincipalComponent } from './pages/reportes-principal/reportes-principal.component';
+import { Reporte1Component } from './components/reporte1/reporte1.component';
 
 
 @NgModule({
@@ -19,13 +21,16 @@ import { ModificarUsuarioComponent } from './pages/modificar-usuario/modificar-u
     MenuComponent,
     UsuariosComponent,
     CrearUsuarioComponent,
-    ModificarUsuarioComponent
+    ModificarUsuarioComponent,
+    ReportesPrincipalComponent,
+    Reporte1Component
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MenubarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

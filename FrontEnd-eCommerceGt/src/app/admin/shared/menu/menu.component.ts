@@ -31,7 +31,8 @@ export class MenuComponent {
       },
       {
         label: 'Reportes',
-        icon: 'pi pi-file-o'
+        icon: 'pi pi-file-o',
+        routerLink: ["/admin/reportes"]
       }
     ];
   }

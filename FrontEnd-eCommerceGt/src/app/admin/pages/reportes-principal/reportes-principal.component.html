@@ -1,0 +1,12 @@
+    <div class="container">
+        <div class="">
+            <h1>Reportes del Administrador</h1>
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let ruta of rutas" >
+                    <a class="btn btn-outline-primary" [routerLink]="ruta.ruta"> {{ruta.nombre}} </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    

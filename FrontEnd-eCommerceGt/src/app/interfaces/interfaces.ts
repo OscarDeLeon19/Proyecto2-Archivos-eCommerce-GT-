@@ -51,3 +51,13 @@ export interface Pedido{
     productos: any[],
     estado: string
 }
+
+export interface Ruta{
+    nombre: string,
+    ruta: string
+}
+
+export interface ReporteProductos{
+    _id : string,
+    ventas: number
+}

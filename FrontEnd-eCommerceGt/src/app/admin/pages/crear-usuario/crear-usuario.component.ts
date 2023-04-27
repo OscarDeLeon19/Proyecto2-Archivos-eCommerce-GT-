@@ -37,8 +37,8 @@ export class CrearUsuarioComponent {
 
 
   ngOnInit(): void {
-    this.fechaMinima = moment().subtract("65", "year").format("YYYY-MM-DD")
-    this.fechaMaxima = moment().subtract("19", "year").format("YYYY-MM-DD")
+    this.fechaMinima = moment().subtract("65", "year").format("YYYY-MM-DD");
+    this.fechaMaxima = moment().subtract("19", "year").format("YYYY-MM-DD");
   }
 
   /**

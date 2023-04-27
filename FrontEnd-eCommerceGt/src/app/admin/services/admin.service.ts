@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/interfaces/interfaces';
+import { ReporteProductos, Usuario } from 'src/app/interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ export class AdminService {
 
   usuario?: Usuario;
   baseUrlUser: string = "http://localhost:3000/user";
+  baseUrlVentas: string = "http://localhost:3000/venta";
 
   constructor(private router: Router, private http: HttpClient) {
     this.obtenerUsuario();
@@ -38,6 +39,10 @@ export class AdminService {
 
   borrarUsuario(username: string) {
     return this.http.delete(`${this.baseUrlUser}/borrarUsuario?username=${username}`);
+  }
+
+  verReporte1(fechaInicial: string, fechaFinal: string) {
+    return this.http.get<ReporteProductos[]>(`${this.baseUrlVentas}/reporte1?fechaInicial=${fechaInicial}&fechaFinal=${fechaFinal}`);
   }
 
 }

@@ -5,6 +5,8 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { CrearUsuarioComponent } from './pages/crear-usuario/crear-usuario.component';
 import { ModificarUsuarioComponent } from './pages/modificar-usuario/modificar-usuario.component';
+import { ReportesPrincipalComponent } from './pages/reportes-principal/reportes-principal.component';
+import { Reporte1Component } from './components/reporte1/reporte1.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +16,8 @@ const routes: Routes = [{
     { path: "usuarios", component: UsuariosComponent },
     { path: "crearUsuario", component: CrearUsuarioComponent },
     { path: "modificarUsuario", component: ModificarUsuarioComponent },
+    { path: "reportes", component: ReportesPrincipalComponent },
+    { path: "reporte1", component: Reporte1Component},
     { path: "**", redirectTo: "principal" },
   ]
 }];
