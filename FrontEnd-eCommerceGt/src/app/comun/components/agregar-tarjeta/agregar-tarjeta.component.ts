@@ -69,8 +69,6 @@ export class AgregarTarjetaComponent implements OnInit {
     const jsonUsuario = localStorage.getItem("usuario");
     if (jsonUsuario) {
       this.usuario = JSON.parse(jsonUsuario);
-    } else {
-      this.router.navigate(["auth/login"]);
     }
   }
 }

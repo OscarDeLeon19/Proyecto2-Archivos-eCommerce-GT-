@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ComunService } from '../../services/comun.service';
 import { Producto } from 'src/app/interfaces/interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,7 +24,7 @@ export class ModificarProductoComponent implements OnInit {
     categoria: ["", [Validators.required]]
   })
 
-  constructor(private route: ActivatedRoute, private comunService: ComunService, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private comunService: ComunService, private fb: FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: any) => {
@@ -43,9 +43,11 @@ export class ModificarProductoComponent implements OnInit {
               categoria: this.producto.categoria,
             })
             this.imagenProducto = this.producto.imagen
+          } else{
+            this.router.navigate(['/comun/misProductos']);
           }
         },
-        error: (e) => { console.log(e); }
+        error: (e) => { console.log(e); this.router.navigate(['/comun/misProductos']); }
       });
 
   }

@@ -15,7 +15,6 @@ export class ComunService {
   usuario?: Usuario;
 
   constructor(private router: Router, private http: HttpClient) {
-    console.log("Activacion");
     this.obtenerUsuario();
   }
 
@@ -23,9 +22,20 @@ export class ComunService {
     let jsonUser = localStorage.getItem("usuario");
     if (jsonUser) {
       this.usuario = JSON.parse(jsonUser);
+    }
+  }
+
+  comprobarLogin() {
+    const user = localStorage.getItem("usuario");
+    if (user) {
+      const usuario: Usuario = JSON.parse(user);
+      if (usuario.tipoUsuario == "Comun") {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      console.log('Adios');
-      this.router.navigate(['/auth/login']);
+      return false
     }
   }
 
@@ -54,7 +64,7 @@ export class ComunService {
     return this.http.get<Pedido[]>(`${this.baseUrlPedido}?username=${username}`);
   }
 
-  agregarProducto(body: any){
+  agregarProducto(body: any) {
     return this.http.post(`${this.baseUrlProductos}/agregar`, body);
   }
 
@@ -72,10 +82,10 @@ export class ComunService {
   }
 
   borrarProducto(_id: string) {
-    return this.http.delete(`${this.baseUrlProductos}/borrarProducto?_id=${_id}`, { body : [{}]});
+    return this.http.delete(`${this.baseUrlProductos}/borrarProducto?_id=${_id}`, { body: [{}] });
   }
 
   borrarVariosProductos(body: any) {
-    return this.http.delete(`${this.baseUrlProductos}/borrarVariosProducto`, { body});
+    return this.http.delete(`${this.baseUrlProductos}/borrarVariosProducto`, { body });
   }
 }

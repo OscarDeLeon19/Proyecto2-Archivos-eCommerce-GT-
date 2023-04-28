@@ -11,23 +11,32 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  crearUsuario(body: any){
-    return this.http.post(this.baseUrl,body);
+  crearUsuario(body: any) {
+    return this.http.post(this.baseUrl, body);
   }
 
-  obtenerUsuario(username: string, password: string){
+  obtenerUsuario(username: string, password: string) {
     return this.http.get<Usuario>(`${this.baseUrl}?username=${username}&password=${password}`);
   }
 
-  agregarTarjeta(body: any){
-    return this.http.put(`${this.baseUrl}/addCard`,body);
+  agregarTarjeta(body: any) {
+    return this.http.put(`${this.baseUrl}/addCard`, body);
   }
 
-  borrarTarjeta(body: any){
-    return this.http.put(`${this.baseUrl}/deleteCard`,body);
+  borrarTarjeta(body: any) {
+    return this.http.put(`${this.baseUrl}/deleteCard`, body);
   }
 
-  actualizarUsuario(body: any){
-    return this.http.put(`${this.baseUrl}/update`,body);
+  actualizarUsuario(body: any) {
+    return this.http.put(`${this.baseUrl}/update`, body);
+  }
+
+  comprobarLogin() {
+    const user = localStorage.getItem("usuario");
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

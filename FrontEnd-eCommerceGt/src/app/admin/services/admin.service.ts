@@ -22,8 +22,20 @@ export class AdminService {
     let jsonUser = localStorage.getItem("usuario");
     if (jsonUser) {
       this.usuario = JSON.parse(jsonUser);
+    }
+  }
+
+  comprobarLogin() {
+    const user = localStorage.getItem("usuario");
+    if (user) {
+      const usuario: Usuario = JSON.parse(user);
+      if (usuario.tipoUsuario == "Administrador") {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      this.router.navigate(['/auth/login']);
+      return false
     }
   }
 

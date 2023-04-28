@@ -42,7 +42,6 @@ export class SolicitudesComponent implements OnInit {
         this.paqueteriaService.cambiarEstadoProducto(body)
           .subscribe({
             next: (e: any) => {
-              console.log(e);
               if (e.modifiedCount == 1) {
                 Swal.fire({
                   position: 'top-end',
@@ -80,7 +79,6 @@ export class SolicitudesComponent implements OnInit {
         this.paqueteriaService.cambiarEstadoProducto(body)
           .subscribe({
             next: (e: any) => {
-              console.log(e);
               if (e.modifiedCount == 1) {
                 Swal.fire({
                   position: 'top-end',

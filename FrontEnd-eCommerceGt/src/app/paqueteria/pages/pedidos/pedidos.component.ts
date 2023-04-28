@@ -42,7 +42,6 @@ export class PedidosComponent implements OnInit {
           _id: pedido._id,
           estado: "Entregado"
         }
-        console.log(body);
         this.paqueteriaService.modificarEstado(body)
           .subscribe({
             next: (result: any) => {

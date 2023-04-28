@@ -13,7 +13,6 @@ export class PaqueteriaService {
   usuario?: Usuario;
 
   constructor(private router: Router, private http: HttpClient) {
-    console.log("Activacion");
     this.obtenerUsuario();
   }
 
@@ -21,8 +20,20 @@ export class PaqueteriaService {
     let jsonUser = localStorage.getItem("usuario");
     if (jsonUser) {
       this.usuario = JSON.parse(jsonUser);
+    }
+  }
+
+  comprobarLogin() {
+    const user = localStorage.getItem("usuario");
+    if (user) {
+      const usuario: Usuario = JSON.parse(user);
+      if (usuario.tipoUsuario == "Paqueteria") {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      this.router.navigate(['/auth/login']);
+      return false
     }
   }
 

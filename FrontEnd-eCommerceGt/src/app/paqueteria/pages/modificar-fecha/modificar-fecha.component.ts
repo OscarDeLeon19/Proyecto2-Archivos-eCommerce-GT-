@@ -31,7 +31,7 @@ export class ModificarFechaComponent implements OnInit {
     this.paqueteriaService.obtenerPedido(this.idPedido)
       .subscribe({
         next: (result: Pedido) => { this.pedidoActual = result; this.nuevaFecha = this.pedidoActual.fechaEntrega },
-        error: (e) => { console.log(e); }
+        error: (e) => { this.router.navigate(["/paqueteria/pedidos"])  }
       });
   }
 

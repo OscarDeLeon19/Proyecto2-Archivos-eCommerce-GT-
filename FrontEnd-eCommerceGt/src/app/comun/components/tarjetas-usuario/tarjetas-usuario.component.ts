@@ -23,8 +23,6 @@ export class TarjetasUsuarioComponent implements OnInit {
     if (jsonUsuario) {
       this.usuario = JSON.parse(jsonUsuario);
       this.tarjetas = this.usuario.tarjetas!;
-    } else {
-      this.router.navigate(["auth/login"]);
     }
   }
 
