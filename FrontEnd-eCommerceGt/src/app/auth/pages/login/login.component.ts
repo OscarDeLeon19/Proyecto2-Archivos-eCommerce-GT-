@@ -63,21 +63,20 @@ export class LoginComponent {
             } else {
               Swal.fire({
                 icon: 'success',
-                title: 'success',
+                title: 'Bienvenido',
                 text: 'Bienvenido ' + res.nombre
               });
               let usuario = JSON.stringify(res);
               localStorage.setItem("usuario", usuario);
               this.miFormulario.reset();
               if (res.tipoUsuario == "Comun") {
-                console.log(res);
                 this.router.navigate(["/comun"])
               } else if (res.tipoUsuario == "Paqueteria") {
                 this.router.navigate(["/paqueteria"])
               } else if (res.tipoUsuario == "Administrador") {
                 this.router.navigate(["/admin"])
               } else {
-                console.log('Perro');
+                console.log('Error');
               }
             }
           }

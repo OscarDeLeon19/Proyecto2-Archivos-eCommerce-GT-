@@ -2,7 +2,7 @@
     <h1>Productos pendientes de aceptar</h1>
     <div class="row">
         <div class="col-sm-4 mb-3 mt-3" *ngFor="let pr of productos; let i = index">
-            <p-card [header]="pr.nombre" subheader="{{pr.precio}}" [style]="{ width: '360px'}">
+            <p-card [header]="pr.nombre" subheader="{{pr.precio | currency:'Q':'symbol'}}" [style]="{ width: '360px'}">
                 <ng-template pTemplate="header">
                     <img alt="Card" src="{{pr.imagen}}" class="imageCard"/>
                 </ng-template>

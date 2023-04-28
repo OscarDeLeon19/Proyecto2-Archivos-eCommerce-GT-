@@ -13,7 +13,7 @@
             <tr *ngFor="let item of pedidos">
                 <td>{{item.fechaEntrega}}</td>
                 <td>{{item.estado}}</td>
-                <td>{{item.total}}</td>
+                <td>{{item.total | currency:'Q':'symbol'}}</td>
                 <td>
                     <ul *ngFor="let pr of item.productos">
                         <li>{{pr.nombre}}</li>

@@ -77,7 +77,8 @@ const actualizarProducto = async (req = request, res = response) => {
                     descripcion,
                     precio,
                     imagen,
-                    categoria
+                    categoria,
+                    estado: "pendiente"
                 }
             });
         res.status(200).json(actualizacion);
@@ -132,6 +133,9 @@ const cambiarEstado = async (req = request, res = response) => {
 const reporteProductosEnVenta = async (req = request, res = response) => {
     try {
         const reporte = await Producto.aggregate([
+            {
+                $match: {estado: "aprobado"}
+            },
             {
                 $group: {
                     _id: "$usuario",
