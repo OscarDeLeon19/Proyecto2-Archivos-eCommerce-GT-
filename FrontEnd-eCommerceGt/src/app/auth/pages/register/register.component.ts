@@ -95,4 +95,8 @@ export class RegisterComponent {
         });
     }
   }
+
+  volver(){
+    this.router.navigate(["/auth/login"]);
+  }
 }

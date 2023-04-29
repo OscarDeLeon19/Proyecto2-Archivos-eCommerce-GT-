@@ -4,6 +4,10 @@ db.createCollection("usuarios");
 
 db.createCollection("productos");
 
+db.createCollection("pedidos");
+
+db.createCollection("ventas");
+
 db.usuarios.createIndex({ username: 1 }, { unique: true })
 
 db.usuarios.insertMany([

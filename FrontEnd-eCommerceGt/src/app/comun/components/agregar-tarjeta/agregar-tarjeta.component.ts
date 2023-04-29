@@ -22,6 +22,7 @@ export class AgregarTarjetaComponent implements OnInit {
     this.obtenerUsuario();
   }
   guardar() {
+    this.obtenerUsuario();
     if (this.miFormulario.invalid) {
       Swal.fire({
         icon: 'error',

@@ -75,7 +75,7 @@ export class CarritoComponent implements OnInit {
 
         Swal.fire({
           title: '¿Seguro que quieres realizar esta compra?',
-          text: "El total es de " + this.total,
+          text: "El total es de Q." + this.total,
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -195,7 +195,7 @@ export class CarritoComponent implements OnInit {
     this.productos.forEach((pr) => {
       this.total += pr.precio;
     });
-    this.textoTotal = `Total: ${this.total}`;
+    this.textoTotal = `Total: Q.${this.total}`;
   }
 
 }
