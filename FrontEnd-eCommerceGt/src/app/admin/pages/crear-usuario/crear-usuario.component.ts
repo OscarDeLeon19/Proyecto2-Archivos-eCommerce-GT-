@@ -95,7 +95,7 @@ export class CrearUsuarioComponent {
   generarPassword() {
     let password = '';
     const caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
-      'abcdefghijklmnopqrstuvwxyz0123456789@#$';
+      'abcdefghijklmnopqrstuvwxyz0123456789';
 
     for (let i = 1; i <= 8; i++) {
       let caracter = Math.floor(Math.random() * caracteres.length + 1);
