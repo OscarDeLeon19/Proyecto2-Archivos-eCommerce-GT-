@@ -8,11 +8,11 @@ router.post('/', controllerUsuario.insertarUsuario);
 
 router.get('/', controllerUsuario.buscarUsuarioLogin);
 
+router.put('/update', controllerUsuario.actualizarUsuario);
+
 router.put('/addCard', controllerUsuario.agregarTarjeta);
 
 router.put('/deleteCard', controllerUsuario.borrarTarjeta);
-
-router.put('/update', controllerUsuario.actualizarUsuario);
 
 router.get('/verUsuariosAdmin', controllerUsuario.verUsuariosAdmin);
 

@@ -47,7 +47,7 @@ const reporteProductosVendidos = async (req = request, res = response) => {
 
     } catch (error) {
         res.status(404).json({
-            message: `Error al ingresar la venta`,
+            message: `Error al ver producto`,
             error
         });
     }
@@ -86,7 +86,7 @@ const reporteGanancias = async (req = request, res = response) => {
 
     } catch (error) {
         res.status(404).json({
-            message: `Error al ingresar la venta`,
+            message: `Error al ver reporte`,
             error
         });
     }

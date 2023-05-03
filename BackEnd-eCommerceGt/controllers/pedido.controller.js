@@ -13,7 +13,7 @@ const insertarPedido = async (req = request, res = response) => {
 
     } catch (error) {
         res.status(404).json({
-            message:`Error al ingresar la venta`,
+            message:`Error al ingresar el pedido`,
             error
         });
     }
@@ -56,7 +56,7 @@ const modificarEstado = async (req = request, res = response) => {
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({
-            message: `Error al buscar pedidos`,
+            message: `Error al modificar estado`,
             error
         });
     }

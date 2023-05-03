@@ -46,7 +46,7 @@ const actualizarUsuario = async (req = request, res = response) => {
         res.status(200).json(busqueda);
     } catch (error) {
         res.status(404).json({
-            message: `Error al buscar un usuario`,
+            message: `Error al actualizar un usuario`,
             error
         });
     }
